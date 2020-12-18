@@ -6,7 +6,7 @@ import Container from 'components/container'
 import {rhythm} from '../../lib/typography'
 import {bpMaxSM} from '../../lib/breakpoints'
 import theme from '../../../config/theme'
-import {uniq, includes, truncate} from 'lodash'
+import {uniq, truncate} from 'lodash'
 
 import Project from 'components/projects/project'
 
@@ -52,6 +52,7 @@ export default function Projects() {
               date
               description
               tech
+              techs
               slug
             }
             fields {
@@ -67,11 +68,19 @@ export default function Projects() {
     projects.edges.map(({node: project}) => project.frontmatter.tech),
   )
 
-  const [displayedTech, setDisplayedTech] = React.useState(projectTech)
+  const [activeTechs, setActiveTechs] = React.useState([])
 
-  const techToggleIsActive = (getDisplayedTech, tech) => {
-    return includes(getDisplayedTech, tech) && getDisplayedTech.length === 1
+  const toggleTech = type => {
+    setActiveTechs(
+      activeTechs.includes(type)
+        ? activeTechs.filter(t => t !== type)
+        : activeTechs.concat(type),
+    )
   }
+
+  // const techToggleIsActive = (activeTech, tech) => {
+  //   return activeTech.includes(tech);
+  // }
 
   const techImage = tech => {
     return (
@@ -102,7 +111,7 @@ export default function Projects() {
           {projectTech.map(tech => (
             <TechToggle
               css={css`
-                ${techToggleIsActive(displayedTech, tech)
+                ${activeTechs.includes(tech)
                   ? `
                   color: white; 
                   background: #2F313E;
@@ -121,13 +130,7 @@ export default function Projects() {
                   }`}
               `}
               key={tech}
-              onClick={() => {
-                if (techToggleIsActive(displayedTech, tech)) {
-                  setDisplayedTech(projectTech)
-                } else {
-                  setDisplayedTech([tech])
-                }
-              }}
+              onClick={() => toggleTech(tech)}
             >
               <img src={techImage(tech)} alt={tech} /> {tech}
             </TechToggle>
@@ -147,7 +150,9 @@ export default function Projects() {
       >
         {projects.edges
           .filter(({node: project}) => {
-            return includes(displayedTech, project.frontmatter.tech)
+            return activeTechs.every(tech =>
+              project.frontmatter.techs.includes(tech),
+            )
           })
           .map(({node: project}) => (
             <Project
