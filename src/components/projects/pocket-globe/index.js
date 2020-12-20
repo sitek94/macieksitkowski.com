@@ -1,19 +1,19 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-// import Img from 'gatsby-image'
 import {css} from '@emotion/react'
 import {bpMaxSM} from 'lib/breakpoints'
 import {fonts} from 'lib/typography'
 import theme from '../../../../config/theme'
 import Link from 'components/link'
-import Barchart from './barchart'
+import Globe from './interactive-globe'
 import techImage from '../tech-images'
 
-export default function HabitTrackerCta({
-  title = `Build a routine of positive, life changing habits`,
+export default function TestingCta({
+  title = `Discover the countries from all around the world`,
   button = `See project`,
-  byline = `Habit Tracker is my final project for Harvard's course CS50: Introduction to Computer Science.`,
-  background = '#0F1B35',
+  byline = `Pocket Globe is an app where I wanted practice using D3.js with React while keeping
+  it very responsive.`,
+  background = '#fff',
 }) {
   return (
     <Banner
@@ -25,14 +25,14 @@ export default function HabitTrackerCta({
         <TopTextBox>
           <Link
             css={css({
-              color: theme.colors.white,
+              color: theme.colors.black,
             })}
-            to="https://epicreact.dev"
+            to="https://testingjavascript.com"
           >
-            Habit Tracker App
+            Pocket Globe App
           </Link>
           <Techs>
-            {['react', 'material-ui', 'firebase'].map(tech => (
+            {['react', 'material-ui', 'd3'].map(tech => (
               <img
                 key={tech}
                 width="26px"
@@ -45,12 +45,12 @@ export default function HabitTrackerCta({
         </TopTextBox>
         <Title>{title}</Title>
         <Byline>{byline}</Byline>
-        <Button href="https://epicreact.dev">{button}</Button>
+        <Button href="https://testingjavascript.com">{button}</Button>
       </Content>
       <Box>
         <BoxContent>
-          <Barchart width={150} height={150} />
-          <h3>Track your progress!</h3>
+          <Globe />
+          <h3>Play and explore!</h3>
         </BoxContent>
 
         <Card />
@@ -86,6 +86,7 @@ const Banner = styled.div({
   overflow: 'hidden',
   maxWidth: 800,
   margin: '0 auto',
+  border: '1px solid #F6F6F6',
   [bpMaxSM]: {
     flexDirection: 'column',
   },
@@ -94,7 +95,6 @@ const Banner = styled.div({
 const Content = styled.div({
   width: '100%',
   padding: '40px 0 40px 40px',
-  color: theme.colors.white,
   [bpMaxSM]: {
     padding: '32px 16px',
     textAlign: 'center',
@@ -107,7 +107,9 @@ const Title = styled.h3({
   fontFamily: fonts.bold,
   marginTop: '1rem',
   marginBottom: 0,
-  color: theme.colors.white,
+  div: {
+    color: '#485FEA',
+  },
 })
 
 const Byline = styled.p({
@@ -160,13 +162,15 @@ const BoxContent = styled.div({
     fontFamily: fonts.semibold,
     fontSize: 20,
     marginTop: 18,
-    color: theme.colors.white,
+    color: '0F1B35',
   },
 })
 
 const Card = styled.div({
+  border: '1px solid #F6F6F6',
   padding: '50px 16px',
-  boxShadow: '0 7px 19px 0 rgba(0,0,0,0.3), 0 12px 47px 0 rgba(0,0,0,0.31)',
+  background: '#FFFFFF',
+  boxShadow: '0 7px 19px 0 rgba(0,0,0,0.04), 0 12px 47px 0 rgba(0,0,0,0.05)',
   borderRadius: '8px 8px 0 0',
   maxWidth: 250,
   maxHeight: 200,

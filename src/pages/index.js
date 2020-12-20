@@ -8,8 +8,8 @@ import Layout from 'components/layout'
 import Link from 'components/link'
 import Container from 'components/container'
 import Hero from 'components/big-hero'
-import HabitTrackerCta from 'components/habit-tracker-cta'
-import PocketGlobeCta from 'components/pocket-globe-cta'
+import HabitTrackerProject from 'components/projects/habit-tracker'
+import PocketGlobeProject from 'components/projects/pocket-globe'
 import theme from '../../config/theme'
 import {bpMaxMD, bpMaxSM} from '../lib/breakpoints'
 import {rhythm, fonts} from '../lib/typography'
@@ -181,8 +181,8 @@ export default function Index({data: {blogPosts}}) {
         </Link>
       </Container>
       <div css={{display: 'grid', gridGap: 20}}>
-        <HabitTrackerCta />
-        <PocketGlobeCta />
+        <HabitTrackerProject />
+        <PocketGlobeProject />
       </div>
       <Projects />
       <Container>
