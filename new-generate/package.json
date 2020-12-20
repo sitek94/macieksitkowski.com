@@ -1,0 +1,13 @@
+{
+  "name": "maciek-project-generator",
+  "private": true,
+  "devDependencies": {
+    "axios": "^0.21.0",
+    "date-fns": "^2.16.1",
+    "json-to-pretty-yaml": "^1.2.2",
+    "tinify": "^1.6.0-beta.2"
+  },
+  "dependencies": {
+    "ora": "^5.1.0"
+  }
+}
