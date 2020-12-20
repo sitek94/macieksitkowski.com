@@ -7,9 +7,8 @@ import {rhythm} from '../../lib/typography'
 import {bpMaxSM} from '../../lib/breakpoints'
 import theme from '../../../config/theme'
 import {flatten, uniq, truncate} from 'lodash'
-
-import Project from 'components/projects/project'
 import techImage from './tech-images'
+import Project from 'components/projects/project'
 
 const TechToggle = styled.button`
   padding: 8px 15px 8px 12px;
