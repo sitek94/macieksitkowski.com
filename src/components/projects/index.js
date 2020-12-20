@@ -124,10 +124,10 @@ export default function Projects() {
               <img
                 width="26px"
                 height="26px"
-                src={techImage(tech)}
-                alt={tech}
+                src={techImage(tech).src}
+                alt={techImage(tech).label}
               />{' '}
-              {tech}
+              {techImage(tech).label}
             </TechToggle>
           ))}
         </div>

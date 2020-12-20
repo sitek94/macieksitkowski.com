@@ -85,6 +85,8 @@ export default function Project({
           }
         `}
         href={repoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         GitHub repository{' '}
         <svg
@@ -110,7 +112,9 @@ export default function Project({
           align-items: center;
         `}
       >
-        <Button href={homepageUrl}>Project live</Button>
+        <Button href={homepageUrl} target="_blank" rel="noopener noreferrer">
+          Project live
+        </Button>
         <span
           css={css`
             display: grid;
@@ -124,8 +128,8 @@ export default function Project({
               key={tech}
               width="30px"
               height="30px"
-              src={techImage(tech)}
-              alt={tech}
+              src={techImage(tech).src}
+              alt={techImage(tech).label}
             />
           ))}
         </span>
