@@ -42,7 +42,7 @@ export default function Projects() {
     query {
       projects: allMdx(
         filter: {fields: {isProject: {eq: true}}}
-        sort: {order: ASC, fields: [frontmatter___tech]}
+        sort: {order: ASC, fields: [frontmatter___date]}
       ) {
         edges {
           node {
@@ -51,7 +51,7 @@ export default function Projects() {
               title
               date
               description
-              tech
+              techs
               slug
             }
             fields {

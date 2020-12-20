@@ -1,0 +1,8 @@
+{
+  "name": "kcd-blog-post-generator",
+  "private": true,
+  "devDependencies": {
+    "date-fns": "^2.16.1",
+    "json-to-pretty-yaml": "^1.2.2"
+  }
+}

@@ -6,13 +6,10 @@ import Container from 'components/container'
 import {rhythm} from '../../lib/typography'
 import {bpMaxSM} from '../../lib/breakpoints'
 import theme from '../../../config/theme'
-import {uniq, truncate} from 'lodash'
+import {flatten, uniq, truncate} from 'lodash'
 
 import Project from 'components/projects/project'
-
-import jsIcon from '../../images/icons/js.svg'
-import reactIcon from '../../images/icons/react.svg'
-import testingIcon from '../../images/icons/testing.svg'
+import techImage from './tech-images'
 
 const TechToggle = styled.button`
   padding: 8px 15px 8px 12px;
@@ -42,7 +39,7 @@ export default function Projects() {
     query {
       projects: allMdx(
         filter: {fields: {isProject: {eq: true}}}
-        sort: {order: ASC, fields: [frontmatter___tech]}
+        sort: {order: ASC, fields: [frontmatter___date]}
       ) {
         edges {
           node {
@@ -51,7 +48,11 @@ export default function Projects() {
               title
               date
               description
-              tech
+              repoUrl
+              homepageUrl
+              banner {
+                ...bannerImage720
+              }
               techs
               slug
             }
@@ -64,8 +65,8 @@ export default function Projects() {
     }
   `)
 
-  const projectTech = uniq(
-    projects.edges.map(({node: project}) => project.frontmatter.tech),
+  const techs = uniq(
+    flatten(projects.edges.map(({node: project}) => project.frontmatter.techs)),
   )
 
   const [activeTechs, setActiveTechs] = React.useState([])
@@ -75,18 +76,6 @@ export default function Projects() {
       activeTechs.includes(type)
         ? activeTechs.filter(t => t !== type)
         : activeTechs.concat(type),
-    )
-  }
-
-  // const techToggleIsActive = (activeTech, tech) => {
-  //   return activeTech.includes(tech);
-  // }
-
-  const techImage = tech => {
-    return (
-      (tech === 'react' && `${reactIcon}`) ||
-      (tech === 'javascript' && `${jsIcon}`) ||
-      (tech === 'testing' && `${testingIcon}`)
     )
   }
 
@@ -108,7 +97,7 @@ export default function Projects() {
             justify-content: center;
           `}
         >
-          {projectTech.map(tech => (
+          {techs.map(tech => (
             <TechToggle
               css={css`
                 ${activeTechs.includes(tech)
@@ -132,7 +121,13 @@ export default function Projects() {
               key={tech}
               onClick={() => toggleTech(tech)}
             >
-              <img src={techImage(tech)} alt={tech} /> {tech}
+              <img
+                width="26px"
+                height="26px"
+                src={techImage(tech)}
+                alt={tech}
+              />{' '}
+              {tech}
             </TechToggle>
           ))}
         </div>
@@ -161,12 +156,10 @@ export default function Projects() {
               description={truncate(project.frontmatter.description, {
                 length: 190,
               })}
-              url={
-                project.fields.slug
-                  ? project.fields.slug
-                  : `/projects/${project.frontmatter.slug}`
-              }
-              tech={project.frontmatter.tech}
+              banner={project.frontmatter.banner}
+              repoUrl={project.frontmatter.repoUrl}
+              homepageUrl={project.frontmatter.homepageUrl}
+              techs={project.frontmatter.techs}
             />
           ))}
       </div>
