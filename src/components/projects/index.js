@@ -2,11 +2,9 @@ import * as React from 'react'
 import {useStaticQuery, graphql} from 'gatsby'
 import {css} from '@emotion/react'
 import styled from '@emotion/styled'
-import Container from 'components/container'
-import {rhythm} from '../../lib/typography'
-import {bpMaxSM} from '../../lib/breakpoints'
+import {fonts, rhythm} from 'lib/typography'
 import theme from '../../../config/theme'
-import {flatten, uniq, truncate} from 'lodash'
+import {truncate} from 'lodash'
 import techImage from './tech-images'
 import Project from 'components/projects/project'
 
@@ -32,6 +30,18 @@ const TechToggle = styled.button`
     border: none;
   }
 `
+
+const orderedTechs = [
+  'react',
+  'material-ui',
+  'redux',
+  'd3',
+  'javascript',
+  'bootstrap',
+  'sass',
+  'css',
+  'html',
+]
 
 export default function Projects() {
   const {projects} = useStaticQuery(graphql`
@@ -64,10 +74,6 @@ export default function Projects() {
     }
   `)
 
-  const techs = uniq(
-    flatten(projects.edges.map(({node: project}) => project.frontmatter.techs)),
-  )
-
   const [activeTechs, setActiveTechs] = React.useState([])
 
   const toggleTech = type => {
@@ -79,15 +85,27 @@ export default function Projects() {
   }
 
   return (
-    <Container noVerticalPadding>
+    <div
+      id="projects"
+      css={css`
+        width: 100%;
+        margin: 0 auto;
+        max-width: 90vw;
+        padding: 40px 0;
+      `}
+    >
       <div
         css={css`
           text-align: center;
           margin: ${rhythm(2)} 0 ${rhythm(1.5)} 0;
+
+          h2 {
+            font-family: ${fonts.light};
+          }
         `}
       >
-        <h1>My Projects</h1>
-        <p>Check out the rest of my projects</p>
+        <h2>ALL PROJECTS</h2>
+        <p>Feel free to sort them by the technologies used</p>
         <div
           css={css`
             display: flex;
@@ -96,7 +114,7 @@ export default function Projects() {
             justify-content: center;
           `}
         >
-          {techs.map(tech => (
+          {orderedTechs.map(tech => (
             <TechToggle
               css={css`
                 ${activeTechs.includes(tech)
@@ -133,13 +151,10 @@ export default function Projects() {
       </div>
       <div
         css={css`
-          display: grid;
-          grid-gap: 20px;
-          grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-
-          ${bpMaxSM} {
-            grid-template-columns: 1fr;
-          }
+          display: flex;
+          flex-wrap: wrap;
+          -webkit-box-pack: center;
+          justify-content: center;
         `}
       >
         {projects.edges
@@ -162,6 +177,6 @@ export default function Projects() {
             />
           ))}
       </div>
-    </Container>
+    </div>
   )
 }

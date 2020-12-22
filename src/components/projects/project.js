@@ -21,7 +21,9 @@ export default function Project({
     <div
       css={css`
         ${styles}
-        margin: 0;
+        ${bpMaxSM} {
+        }
+
         h1 {
           font-size: 22px;
           min-height: 55px;
