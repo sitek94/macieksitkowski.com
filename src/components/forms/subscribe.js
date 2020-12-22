@@ -128,7 +128,7 @@ function useFetch({url, body}) {
   return state
 }
 
-function Subscribe({style, tags = [], header = 'Join the Newsletter'}) {
+function Subscribe({style, tags = [], header = 'Send me a message'}) {
   const [values, setValues] = React.useState()
   const {pending, response, error} = useFetch({
     url: `https://app.convertkit.com/forms/827139/subscriptions`,
@@ -166,29 +166,6 @@ function Subscribe({style, tags = [], header = 'Join the Newsletter'}) {
         >
           {() => (
             <StyledFormikForm>
-              <label htmlFor="first_name">
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: flex-end;
-                  `}
-                >
-                  First Name
-                  <ErrorMessage
-                    name="first_name"
-                    component="span"
-                    className="field-error"
-                  />
-                </div>
-              </label>
-              <Field
-                id="first_name"
-                aria-required="false"
-                name="first_name"
-                placeholder="Jane"
-                type="text"
-              />
               <label htmlFor="email">
                 <div
                   css={css`
@@ -212,8 +189,31 @@ function Subscribe({style, tags = [], header = 'Join the Newsletter'}) {
                 placeholder="jane@acme.com"
                 type="email"
               />
+              <label htmlFor="first_name">
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                  `}
+                >
+                  Message
+                  <ErrorMessage
+                    name="first_name"
+                    component="span"
+                    className="field-error"
+                  />
+                </div>
+              </label>
+              <Field
+                id="first_name"
+                aria-required="false"
+                name="first_name"
+                placeholder="Do you play chess?"
+                type="text"
+              />
               <button data-element="submit" type="submit">
-                {!pending && 'Subscribe'}
+                {!pending && 'Send'}
                 {pending && 'Submitting...'}
               </button>
             </StyledFormikForm>

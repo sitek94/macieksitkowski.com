@@ -38,7 +38,7 @@ const typography = new Typography({
     },
     h2: {
       color: 'hsla(0,0%,0%,0.775)',
-      fontFamily: fonts.semibold,
+      fontFamily: fonts.light,
     },
     'h1,h2,h3,h4,h5,h6': {
       lineHeight: 1,
