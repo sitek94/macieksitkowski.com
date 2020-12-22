@@ -10,11 +10,9 @@ import Container from './container'
 import {bpMaxSM} from '../lib/breakpoints'
 import {lighten} from 'polished'
 
-function HeaderLink({headerColor, activeClassName = 'active', ...props}) {
+function HeaderLink({headerColor, ...props}) {
   return (
     <Link
-      activeClassName={activeClassName}
-      partiallyActive={true}
       css={{
         textDecoration: 'none',
         color: headerColor ? headerColor : theme.colors.body_color,
@@ -89,7 +87,6 @@ function Header({
           <HeaderLink
             to={headerLink}
             aria-label="go to homepage"
-            activeClassName="none"
             headerColor={headerColor}
             css={{
               position: 'relative',
@@ -134,28 +131,21 @@ function Header({
             <MobileNav color={headerColor} />
             <NavLink
               headerColor={headerColor}
-              to="/blog/"
-              aria-label="View blog page"
-            >
-              Blog
-            </NavLink>
-            <NavLink
-              headerColor={headerColor}
-              to="/projects/"
+              to="#projects"
               aria-label="View projects page"
             >
               Projects
             </NavLink>
             <NavLink
               headerColor={headerColor}
-              to="/courses"
-              aria-label="View courses page"
+              to="#contact"
+              aria-label="View about page"
             >
-              Courses
+              Contact
             </NavLink>
             <NavLink
               headerColor={headerColor}
-              to="/about/"
+              to="#about"
               aria-label="View about page"
             >
               About

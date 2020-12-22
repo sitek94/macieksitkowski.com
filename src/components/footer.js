@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Link from '../components/link'
 import {css} from '@emotion/react'
 import theme from '../../config/theme'
 import {bpMaxSM} from '../lib/breakpoints'
@@ -7,19 +6,29 @@ import SubscribeForm from './forms/subscribe'
 import {Twitter, GitHub, YouTube, RSS} from './social'
 import Container from './container'
 
-import Signature from '../images/signature.png'
+import particlesOptions from 'lib/particles.json'
+import Particles from 'react-tsparticles'
 
 const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
   <footer
     css={css`
+      position: relative;
       background: ${theme.colors.purple_dark};
       color: white;
       margin-top: 70px;
+      .particles {
+        position: absolute;
+        inset: 0px;
+      }
     `}
   >
+    <Particles className="particles" options={particlesOptions} />
     <Container
+      id="contact"
       maxWidth={maxWidth}
       css={css`
+        position: relative;
+        z-index: 10;
         padding-top: 0;
         padding-bottom: 0;
         display: flex;
@@ -61,16 +70,6 @@ const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
           <YouTube />
           <RSS />
         </div>
-
-        <Link to="/" aria-label="Return to homepage">
-          <img
-            src={Signature}
-            alt="Kent C. Dodds"
-            css={css`
-              max-width: 100px;
-            `}
-          />
-        </Link>
       </div>
     </Container>
   </footer>
