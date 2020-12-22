@@ -8,7 +8,7 @@ import Link from 'components/link'
 import Globe from './interactive-globe'
 import techImage from '../tech-images'
 
-export default function TestingCta({
+export default function PocketGlobeApp({
   title = `Discover the countries from all around the world`,
   button = `See project`,
   byline = `Pocket Globe is an app where I wanted practice using D3.js with React while keeping
@@ -19,6 +19,7 @@ export default function TestingCta({
     <Banner
       css={css({
         background,
+        boxShadow: `0 0 3px rgba(0, 0, 0, 0.1)`,
       })}
     >
       <Content>

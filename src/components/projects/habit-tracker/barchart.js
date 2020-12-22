@@ -40,6 +40,14 @@ export default function Barchart({width = 400, height = 400}) {
   const [data, setData] = React.useState(getInitialData(defaultColors))
   const svgRef = React.useRef(null)
 
+  // Update data interval
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setData(getRandomData(defaultColors))
+    }, 5000)
+    return () => clearInterval(id)
+  }, [])
+
   // Redraw svg whenever data changes
   React.useEffect(() => {
     // x scale
