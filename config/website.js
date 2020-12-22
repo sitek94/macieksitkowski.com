@@ -2,7 +2,7 @@ module.exports = {
   siteTitle: 'Maciek Sitkowski', // Navigation and Site Title
   siteTitleAlt: 'The personal website of Maciek Sitkowski', // Alternative Site title for SEO
   siteTitleShort: 'macieksitkowski', // short_name for manifest
-  siteUrl: process.env.ROOT_URL || 'https://kentcdodds.com', // Domain of your site. No trailing slash!
+  siteUrl: process.env.ROOT_URL || 'https://macieksitkowski.com', // Domain of your site. No trailing slash!
   lang: 'en', // Language Tag on <html> element
   pathPrefix: '/',
   siteLogo: 'images/logo.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
@@ -15,10 +15,7 @@ module.exports = {
     lives with his wife and four kids in Utah.
   `,
   author: 'Maciek Sitkowski', // Author for schemaORGJSONLD
-  organization: 'Maciek Sitkowski Tech LLC',
 
-  // siteFBAppID: '123456789', // Facebook App ID - Optional
-  userTwitter: '@kentcdodds', // Twitter Username
   ogSiteName: 'Maciek Sitkowski', // Facebook Site Name
   ogLanguage: 'en_US',
 
@@ -27,10 +24,8 @@ module.exports = {
   backgroundColor: '#231C42',
 
   // Social component
-  twitter: 'https://twitter.com/kentcdodds/',
-  twitterHandle: '@kentcdodds',
-  github: 'https://github.com/kentcdodds/',
-  linkedin: 'https://www.linkedin.com/in/kentcdodds/',
-  youtube: 'https://www.youtube.com/channel/UCz-BYvuntVRt_VpfR6FKXJw',
-  rss: 'https://kentcdodds.com/blog/rss.xml',
+  github: 'https://github.com/sitek94/',
+  // linkedin: 'https://www.linkedin.com/in/kentcdodds/',
+  youtube: 'https://www.youtube.com/channel/UC1rKQAm9EWiHtI4ADYusG0w',
+  freeCodeCamp: 'https://forum.freecodecamp.org/u/sitek94/summary',
 }

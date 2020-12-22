@@ -36,14 +36,6 @@ function SEO({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        <meta property="fb:app_id" content={seo.social.fbAppID} />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content={seo.social.twitter} />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} />
       </Helmet>
       <SchemaOrg
         isBlogPost={isBlogPost}
@@ -54,7 +46,6 @@ function SEO({
         datePublished={datePublished}
         canonicalUrl={seo.canonicalUrl}
         author={seo.author}
-        organization={seo.organization}
         defaultTitle={seo.title}
       />
     </>
@@ -74,15 +65,6 @@ function SEOWithQuery(props) {
           image
           author {
             name
-          }
-          organization {
-            name
-            url
-            logo
-          }
-          social {
-            twitter
-            fbAppID
           }
         }
       }

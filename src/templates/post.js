@@ -6,7 +6,6 @@ import SEO from 'components/seo'
 import {css} from '@emotion/react'
 import Container from 'components/container'
 import Layout from 'components/layout'
-import Share from 'components/share'
 import SubscribeForm from 'components/forms/subscribe'
 import BlogPostFooter from 'components/blog-post-footer'
 import Markdown from 'react-markdown'
@@ -51,10 +50,6 @@ export default function PostPage({data: {site, mdx}}) {
         css={css`
           width: 100%;
           display: flex;
-          twitter-widget {
-            margin-left: auto;
-            margin-right: auto;
-          }
         `}
       >
         <Container
@@ -131,13 +126,6 @@ export default function PostPage({data: {site, mdx}}) {
             Edit post on GitHub
           </a>
         </p>
-      </Container>
-      <Container noVerticalPadding css={{marginBottom: 40}}>
-        <Share
-          url={blogPostUrl}
-          title={title}
-          twitterHandle={config.twitterHandle}
-        />
       </Container>
       <Container>
         <BlogPostFooter />

@@ -23,10 +23,6 @@ export default function ProjectPage({data: {site, mdx}}) {
         css={css`
           width: 100%;
           display: flex;
-          twitter-widget {
-            margin-left: auto;
-            margin-right: auto;
-          }
         `}
       >
         <Container

@@ -3,7 +3,7 @@ import {css} from '@emotion/react'
 import theme from '../../config/theme'
 import {bpMaxSM} from '../lib/breakpoints'
 import SubscribeForm from './forms/subscribe'
-import {Twitter, GitHub, YouTube, RSS} from './social'
+import {GitHub, YouTube, FreeCodeCamp} from './social'
 import Container from './container'
 
 import particlesOptions from 'lib/particles.json'
@@ -65,10 +65,9 @@ const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
         `}
       >
         <div>
-          <Twitter />
           <GitHub />
+          <FreeCodeCamp />
           <YouTube />
-          <RSS />
         </div>
       </div>
     </Container>

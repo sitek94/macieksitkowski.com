@@ -32,7 +32,6 @@ module.exports = {
   siteMetadata: {
     siteUrl,
     title: config.siteTitle,
-    twitterHandle: config.twitterHandle,
     description: config.siteDescription,
     keywords: [
       'Software Engineer',
@@ -44,15 +43,6 @@ module.exports = {
     author: {
       name: config.author,
       minibio: config.minibio,
-    },
-    organization: {
-      name: config.organization,
-      url: siteUrl,
-      logo: config.siteLogo,
-    },
-    social: {
-      twitter: config.twitterHandle,
-      fbAppID: '',
     },
   },
   plugins: [
@@ -111,7 +101,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-workerize-loader',
-    'gatsby-plugin-twitter',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-emotion',
