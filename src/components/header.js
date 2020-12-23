@@ -131,21 +131,21 @@ function Header({
             <MobileNav color={headerColor} />
             <NavLink
               headerColor={headerColor}
-              to="#projects"
+              to="/#projects"
               aria-label="View projects page"
             >
               Projects
             </NavLink>
             <NavLink
               headerColor={headerColor}
-              to="#contact"
+              to="/#contact"
               aria-label="View about page"
             >
               Contact
             </NavLink>
             <NavLink
               headerColor={headerColor}
-              to="#about"
+              to="/#about"
               aria-label="View about page"
             >
               About

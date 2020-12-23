@@ -1,5 +1,4 @@
 import * as React from 'react'
-import {graphql} from 'gatsby'
 import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import SEO from 'components/seo'
@@ -35,7 +34,7 @@ const Description = styled.div`
   }
 `
 
-export default function Index(/* {data: {blogPosts}} */) {
+export default function Index() {
   return (
     <Layout headerColor={theme.colors.white} logo={false} hero={<Hero />}>
       <SEO />
@@ -109,45 +108,3 @@ export default function Index(/* {data: {blogPosts}} */) {
     </Layout>
   )
 }
-
-export const pageQuery = graphql`
-  query {
-    blogPosts: allMdx(
-      limit: 5
-      sort: {fields: [frontmatter___date], order: DESC}
-      filter: {
-        frontmatter: {published: {ne: false}, unlisted: {ne: true}}
-        fileAbsolutePath: {regex: "//content/blog//"}
-      }
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            title
-            slug
-            date
-          }
-          parent {
-            ... on File {
-              sourceInstanceName
-            }
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            description
-            banner {
-              childImageSharp {
-                sizes(maxWidth: 720) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            }
-            keywords
-          }
-        }
-      }
-    }
-  }
-`

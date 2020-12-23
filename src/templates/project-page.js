@@ -17,7 +17,6 @@ export default function ProjectPage({data: {site, mdx}}) {
       <SEO
         frontmatter={mdx.fields}
         metaImage={get(mdx, 'fields.banner.childImageSharp.fluid.src')}
-        isBlogPost
       />
       <article
         css={css`
@@ -69,11 +68,6 @@ export default function ProjectPage({data: {site, mdx}}) {
 
 export const pageQuery = graphql`
   query($id: String!) {
-    site {
-      siteMetadata {
-        keywords
-      }
-    }
     mdx(fields: {id: {eq: $id}}) {
       frontmatter {
         ckTag
@@ -87,10 +81,8 @@ export const pageQuery = graphql`
         banner {
           ...bannerImage720
         }
-        bannerCredit
         slug
         description
-        keywords
       }
       body
     }

@@ -10,7 +10,6 @@ function SEO({
   siteMetadata: seo,
   postData,
   metaImage,
-  isBlogPost,
   frontmatter: postMeta = postData.childMarkdownRemark.frontmatter || {},
   title = postMeta.title || config.siteTitle,
   description = postMeta.plainTextDescription ||
@@ -20,7 +19,7 @@ function SEO({
   url = postMeta.slug
     ? `${seo.canonicalUrl}${postMeta.slug}`
     : seo.canonicalUrl,
-  datePublished = isBlogPost ? postMeta.datePublished : false,
+  datePublished = postMeta.datePublished,
 }) {
   return (
     <>
@@ -32,13 +31,11 @@ function SEO({
 
         {/* OpenGraph tags */}
         <meta property="og:url" content={url} />
-        {isBlogPost ? <meta property="og:type" content="article" /> : null}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
       </Helmet>
       <SchemaOrg
-        isBlogPost={isBlogPost}
         url={url}
         title={title}
         image={image}
@@ -74,7 +71,6 @@ function SEOWithQuery(props) {
 }
 
 SEOWithQuery.propTypes = {
-  isBlogPost: PropTypes.bool,
   postData: PropTypes.shape({
     childMarkdownRemark: PropTypes.shape({
       frontmatter: PropTypes.any,
@@ -85,7 +81,6 @@ SEOWithQuery.propTypes = {
 }
 
 SEOWithQuery.defaultProps = {
-  isBlogPost: false,
   postData: {childMarkdownRemark: {}},
   metaImage: null,
 }

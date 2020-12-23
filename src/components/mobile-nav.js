@@ -99,13 +99,13 @@ const Toggle = ({color = 'white'}) => {
               }
             `}
           >
-            <Link aria-label="View blog page" to="#about">
+            <Link aria-label="Go to about section" to="#about">
               About
             </Link>
-            <Link aria-label="View projects page" to="#projects">
+            <Link aria-label="Go to projects section" to="#projects">
               Projects
             </Link>
-            <Link aria-label="View about page" to="#contact">
+            <Link aria-label="Go to contact section" to="#contact">
               Contact
             </Link>
           </Container>

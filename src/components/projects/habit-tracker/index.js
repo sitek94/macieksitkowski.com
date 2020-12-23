@@ -27,7 +27,7 @@ export default function HabitTrackerCta({
             css={css({
               color: theme.colors.white,
             })}
-            to="https://epicreact.dev"
+            to="/projects/habit-tracker-app"
           >
             Habit Tracker App
           </Link>
@@ -45,7 +45,7 @@ export default function HabitTrackerCta({
         </TopTextBox>
         <Title>{title}</Title>
         <Byline>{byline}</Byline>
-        <Button href="https://epicreact.dev">{button}</Button>
+        <Button href="/projects/habit-tracker-app">{button}</Button>
       </Content>
       <Box>
         <BoxContent>

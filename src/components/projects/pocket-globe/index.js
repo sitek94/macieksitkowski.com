@@ -28,7 +28,7 @@ export default function PocketGlobeApp({
             css={css({
               color: theme.colors.black,
             })}
-            to="https://testingjavascript.com"
+            to="/projects/pocket-globe-app"
           >
             Pocket Globe App
           </Link>
@@ -46,7 +46,7 @@ export default function PocketGlobeApp({
         </TopTextBox>
         <Title>{title}</Title>
         <Byline>{byline}</Byline>
-        <Button href="https://testingjavascript.com">{button}</Button>
+        <Button href="/projects/pocket-globe-app">{button}</Button>
       </Content>
       <Box>
         <BoxContent>
