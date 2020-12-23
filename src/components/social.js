@@ -20,8 +20,8 @@ export const LinkedIn = ({
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="40"
-      height="40"
+      width="23"
+      height="23"
       viewBox="0 0 23 23"
     >
       <path
@@ -49,8 +49,8 @@ export const GitHub = ({
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="40"
-      height="40"
+      width="23"
+      height="23"
       viewBox="0 0 23 23"
     >
       <path
@@ -79,8 +79,8 @@ export const YouTube = ({
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="40"
-      height="40"
+      width="23"
+      height="24"
       viewBox="0 0 23 24"
     >
       <path
@@ -108,8 +108,8 @@ export const FreeCodeCamp = ({
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="50"
-      height="40"
+      width="30"
+      height="20"
       viewBox="0 0 30 20"
     >
       <title>free-code-camp</title>

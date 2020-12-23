@@ -28,19 +28,16 @@
       "color": "#ffffff",
       "distance": 100,
       "enable": true,
-      "opacity": 0.5,
+      "opacity": 0.3,
       "width": 1
     },
     "collisions": {
       "enable": true
     },
     "move": {
-      "direction": "none",
       "enable": true,
-      "outMode": "out",
-      "random": false,
-      "speed": 3,
-      "straight": false
+      "outMode": "bounce",
+      "speed": 3
     },
     "number": {
       "density": {

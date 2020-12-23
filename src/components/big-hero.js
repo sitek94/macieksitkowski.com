@@ -6,6 +6,7 @@ import {fonts} from '../lib/typography'
 import Container from 'components/container'
 import heroImageRight from '../images/hero/path-right.svg'
 import heroImageLeft from '../images/hero/path-left.svg'
+
 import particlesOptions from 'lib/particles.json'
 import Particles from 'react-tsparticles'
 

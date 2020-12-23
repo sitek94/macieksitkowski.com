@@ -26,12 +26,6 @@ function HeaderLink({headerColor, ...props}) {
               ? 'white'
               : theme.colors.link_color_hover,
         },
-        '&.active': {
-          background:
-            headerColor === theme.colors.white
-              ? 'rgba(40, 28, 77, 0.3)'
-              : lighten(0.4, theme.brand.primary),
-        },
       }}
       {...props}
     />

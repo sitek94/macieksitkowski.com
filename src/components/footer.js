@@ -1,13 +1,15 @@
 import * as React from 'react'
 import {css} from '@emotion/react'
 import theme from '../../config/theme'
-import {bpMaxSM} from '../lib/breakpoints'
+import Link from 'components/link'
+import {bpMaxSM} from 'lib/breakpoints'
 import SubscribeForm from './forms/subscribe'
 import {GitHub, YouTube, FreeCodeCamp} from './social'
 import Container from './container'
 
 import particlesOptions from 'lib/particles.json'
 import Particles from 'react-tsparticles'
+import {fonts} from 'lib/typography'
 
 const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
   <footer
@@ -52,8 +54,7 @@ const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          div,
-          img {
+          div {
             margin: 50px 0;
             ${bpMaxSM} {
               margin: 20px 0;
@@ -62,6 +63,11 @@ const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
           ${bpMaxSM} {
             align-items: center;
           }
+          h4 {
+            font-family: ${fonts.light};
+            font-size: 14px;
+            color: white;
+          }
         `}
       >
         <div>
@@ -69,6 +75,12 @@ const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
           <FreeCodeCamp />
           <YouTube />
         </div>
+
+        <Link to="/" aria-label="Return to homepage">
+          <div>
+            <h4>by Maciek Sitkowski</h4>
+          </div>
+        </Link>
       </div>
     </Container>
   </footer>

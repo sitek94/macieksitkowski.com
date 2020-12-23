@@ -5,96 +5,8 @@ const rimraf = require('rimraf')
 const {spawnSync} = require('child_process')
 const slugify = require('@sindresorhus/slugify')
 const {createFilePath} = require('gatsby-source-filesystem')
-const remark = require('remark')
-const stripMarkdownPlugin = require('strip-markdown')
 const {zipFunctions} = require('@netlify/zip-it-and-ship-it')
 const config = require('./config/website')
-
-const createProjects = (createPage, edges) => {
-  edges.forEach(({node}, i) => {
-    const prev = i === 0 ? null : edges[i - 1].node
-    const next = i === edges.length - 1 ? null : edges[i + 1].node
-    const pagePath = node.fields.slug
-
-    createPage({
-      path: pagePath,
-      component: path.resolve(`./src/templates/project-page.js`),
-      context: {
-        id: node.id,
-        prev,
-        next,
-      },
-    })
-  })
-}
-
-function createProjectPages({data, actions}) {
-  if (!data.edges.length) {
-    throw new Error('There are no projects!')
-  }
-
-  const {edges} = data
-  const {createPage} = actions
-  createProjects(createPage, edges)
-
-  return null
-}
-
-function stripMarkdown(markdownString) {
-  return remark()
-    .use(stripMarkdownPlugin)
-    .processSync(markdownString)
-    .toString()
-}
-
-const createPages = async ({actions, graphql}) => {
-  const {data, errors} = await graphql(`
-    fragment PostDetails on Mdx {
-      fileAbsolutePath
-      id
-      parent {
-        ... on File {
-          name
-          sourceInstanceName
-        }
-      }
-      excerpt(pruneLength: 250)
-      fields {
-        title
-        slug
-        description
-        date
-      }
-    }
-    query {
-      projects: allMdx(sort: {order: DESC, fields: [frontmatter___date]}) {
-        edges {
-          node {
-            ...PostDetails
-          }
-        }
-      }
-      projects: allMdx(sort: {order: DESC, fields: [frontmatter___date]}) {
-        edges {
-          node {
-            ...PostDetails
-          }
-        }
-      }
-    }
-  `)
-
-  if (errors) {
-    return Promise.reject(errors)
-  }
-
-  const {projects} = data
-
-  createProjectPages({
-    data: projects,
-    actions,
-  })
-}
 
 const onCreateWebpackConfig = ({actions}) => {
   actions.setWebpackConfig({
@@ -149,12 +61,6 @@ function onCreateMdxNode({node, getNode, actions}) {
   })
 
   createNodeField({
-    name: 'plainTextDescription',
-    node,
-    value: stripMarkdown(node.frontmatter.description),
-  })
-
-  createNodeField({
     name: 'slug',
     node,
     value: slug,
@@ -200,24 +106,6 @@ function onCreateMdxNode({node, getNode, actions}) {
   })
 
   createNodeField({
-    name: 'editLink',
-    node,
-    value: `https://github.com/kentcdodds/kentcdodds.com/edit/master${node.fileAbsolutePath.replace(
-      __dirname,
-      '',
-    )}`,
-  })
-
-  createNodeField({
-    name: 'historyLink',
-    node,
-    value: `https://github.com/kentcdodds/kentcdodds.com/commits/master${node.fileAbsolutePath.replace(
-      __dirname,
-      '',
-    )}`,
-  })
-
-  createNodeField({
     name: 'noFooter',
     node,
     value: node.frontmatter.noFooter || false,
@@ -260,7 +148,7 @@ const onPostBuild = async () => {
 }
 
 module.exports = {
-  createPages,
+  // createPages,
   onCreateWebpackConfig,
   onCreateNode,
   onPreBootstrap,

@@ -4,7 +4,7 @@ import SEO from 'components/seo'
 import Layout from 'components/layout'
 import BigHero from 'components/big-hero'
 import theme from '../../config/theme'
-
+import SmallHero from 'components/small-hero'
 import {css} from '@emotion/react'
 import {bpMaxSM} from 'lib/breakpoints'
 
@@ -17,7 +17,9 @@ function MarkdownPage({children, pageContext: {frontmatter}}) {
         hero={
           frontmatter.useBigHero ? (
             <BigHero message={frontmatter.heroMessage} />
-          ) : undefined
+          ) : (
+            <SmallHero />
+          )
         }
         noFooter={frontmatter.noFooter}
         frontmatter={frontmatter}

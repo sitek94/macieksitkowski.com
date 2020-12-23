@@ -83,6 +83,9 @@ module.exports = {
               maxWidth: 1035,
             },
           },
+          {
+            resolve: `gatsby-remark-embedder`,
+          },
         ],
       },
     },
@@ -95,10 +98,10 @@ module.exports = {
     },
     'gatsby-plugin-workerize-loader',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-emotion',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
