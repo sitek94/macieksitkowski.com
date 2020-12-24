@@ -1,128 +1,100 @@
 import * as React from 'react'
-import {navigate} from 'gatsby-link'
+import * as Yup from 'yup'
+import styled from '@emotion/styled'
+import theme from '../../../config/theme'
+import Message from 'components/message'
+import {MessageSentIllustration} from 'illustrations/message-sent'
+import {css} from '@emotion/react'
+import {Formik, Field, Form, ErrorMessage} from 'formik'
+import {rhythm} from '../../lib/typography'
+import {bpMaxSM} from '../../lib/breakpoints'
 
-function SubjectSelector({options, noSelectionUi, label, value, ...rest}) {
-  return (
-    <>
-      <div>
-        <label htmlFor="subject-selector">{label}</label>
-        <br />
-        <select id="subject-selector" value={value} {...rest}>
-          {Object.keys(options).map(key => (
-            <option key={key} value={key}>
-              {options[key].display}
-            </option>
-          ))}
-        </select>
-      </div>
-      {options[value] ? (
-        <React.Fragment key={options[value].display}>
-          {options[value].ui}
-        </React.Fragment>
-      ) : (
-        noSelectionUi
-      )}
-    </>
-  )
-}
+const ContactSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email address').required('Required'),
+  message: Yup.string(),
+})
 
-function CountupTextarea({
-  maxLength,
-  defaultValue = '',
-  onChange = () => {},
-  wrapperClassName,
-  ...rest
-}) {
-  const [length, setLength] = React.useState(defaultValue.length)
-  function handleChange(e) {
-    setLength(e.target.value.length)
-    onChange(e)
-  }
-  // this allows us to increase the opacity exponensially as they near the maxLength
-  const level = length ** 6 / maxLength ** 6
+function MessageSentInfo() {
   return (
-    <div>
-      <StoredFormControl>
-        <textarea
-          maxLength={maxLength}
-          defaultValue={defaultValue}
-          onChange={handleChange}
-          {...rest}
-        />
-      </StoredFormControl>
-      <div
-        style={{
-          opacity: level,
-          fontSize: 12,
-          color: level > 0.3 ? 'red' : null,
-          fontWeight: level > 0.5 ? 'bold' : null,
-        }}
-      >
-        <span>
-          {length} / {maxLength}
-        </span>
-        <span>{length >= maxLength ? ' please be more brief' : null}</span>
-      </div>
+    <div
+      css={css`
+        h2 {
+          color: white !important;
+        }
+      `}
+    >
+      <Message
+        illustration={MessageSentIllustration}
+        title="Message sent"
+        body={`Thanks for reaching out to me!
+        I will get back to you as soon as possible.`}
+      />
     </div>
   )
 }
 
-const callAll = (...fns) => (...args) => fns.forEach(fn => fn && fn(...args))
+const ContactFormWrapper = styled.div({
+  color: 'white',
+  maxWidth: '350px',
+  padding: '40px',
+  background: theme.colors.purple_dark,
+  backgroundImage: `linear-gradient(
+    -213deg, 
+    ${theme.colors.background_light} 0%, 
+    ${theme.colors.background_dark} 100%), 
+    linear-gradient(32deg, rgba(255, 255, 255, 0.25) 33%, rgba(0, 0, 0, 0.25) 100%)`,
+  borderRadius: '5px',
+})
 
-function StoredFormControl({
-  children,
-  formControl = React.Children.only(children),
-  lsKey = `lsfc:${formControl.props.name}`,
-  queryParamName = lsKey.replace(/lsfc:/, ''),
-  defaultValue = formControl.props.defaultValue,
-}) {
-  const [hasChanged, setHasChanged] = React.useState(false)
-  const [value, setValue] = React.useState(() => {
-    if (typeof window === 'undefined') {
-      return defaultValue
-    }
-    const searchParams = new URL(window.location).searchParams
-    const queryParamValue = searchParams.get(queryParamName)
-    return queryParamValue || window.localStorage.getItem(lsKey) || defaultValue
-  })
-
-  if (
-    formControl.props.value !== undefined &&
-    formControl.props.value !== value
-  ) {
-    setValue(formControl.props.value)
+const formCss = css`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  label {
+    margin: 10px 0;
   }
-
-  React.useEffect(() => {
-    if (hasChanged) {
-      if (value) {
-        window.localStorage.setItem(lsKey, value)
-      } else {
-        window.localStorage.removeItem(lsKey)
-      }
+  .field-error {
+    display: block;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 80%;
+  }
+  input,
+  label {
+    width: 100%;
+    font-size: 16px;
+  }
+  ${bpMaxSM} {
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    label,
+    input {
+      margin: 5px 0 0 0 !important;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
     }
-  }, [value, lsKey, hasChanged])
+  }
+  button {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+`
+const StyledFormikForm = styled(Form)`
+  ${formCss}
+`
 
-  return React.cloneElement(formControl, {
-    onChange: callAll(formControl.props.onChange, e => {
-      setHasChanged(true)
-      setValue(e.target.value)
-    }),
-    value,
-    defaultValue: undefined,
-  })
-}
-
-function fetchReducer(state, {type, data, error}) {
+// Fetch reducer
+function fetchReducer(state, {type, response, error}) {
   switch (type) {
     case 'fetching': {
-      return {fetching: true, data: null, error: null}
+      return {error: null, response: null, pending: true}
     }
-    case 'fetched': {
-      return {fetching: false, data, error: null}
+    case 'success': {
+      return {error: null, response, pending: false}
     }
     case 'error': {
-      return {fetching: false, data: null, error}
+      return {error, response: null, pending: false}
     }
     default:
       throw new Error(`Unsupported type: ${type}`)
@@ -131,337 +103,128 @@ function fetchReducer(state, {type, data, error}) {
 
 function useFetch({url, body}) {
   const [state, dispatch] = React.useReducer(fetchReducer, {
-    fetching: false,
-    data: null,
     error: null,
+    response: null,
+    pending: false,
   })
+  const bodyString = JSON.stringify(body)
+
   React.useEffect(() => {
-    if (body) {
+    if (url && bodyString) {
       dispatch({type: 'fetching'})
       fetch(url, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body,
+        method: 'post',
+        body: bodyString,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
       })
-        .then(r => (r.ok ? r : Promise.reject(r)))
+        .then(r => r.json())
         .then(
-          async response => {
-            const data = await response.json()
-            dispatch({type: 'fetched', data})
-          },
-          async error => {
-            try {
-              dispatch({
-                type: 'error',
-                error:
-                  (await error.json?.()) || (await error.text?.()) || error,
-              })
-            } catch (_ignore) {
-              // we tried to parse the response... But no dice so...
-              dispatch({type: 'error', error})
-            }
-          },
+          response => dispatch({type: 'success', response}),
+          error => dispatch({type: 'error', error}),
         )
     }
-  }, [url, body])
+  }, [url, bodyString])
+
   return state
 }
 
-function ContactForm() {
-  const [body, setBody] = React.useState('')
-
-  const {fetching, data, error} = useFetch({
-    url: `${process.env.NETLIFY_FUNCTIONS_URL}/contact`,
-    body,
+// Contact Form
+export default function ContactForm({style, header = 'Send message'}) {
+  const [values, setValues] = React.useState()
+  const {pending, response, error} = useFetch({
+    url: `http://localhost:9000/.netlify/functions/contact`,
+    body: values,
   })
 
-  React.useEffect(() => {
-    if (fetching) {
-      return
-    }
-    if (data) {
-      navigate('/contact/success')
-    }
-    if (error) {
-      /* eslint no-console:0 */
-      console.log(error)
-      setBody('')
-    }
-  }, [fetching, data, error])
+  const errorMessage = error ? 'Something went wrong!' : null
+  const submitted = Boolean(response)
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    setBody(JSON.stringify(getFormValues(e.target)))
-  }
+  const successful = response && response.success
 
   return (
-    <form
-      name="contact"
-      onSubmit={handleSubmit}
-      css={{
-        display: 'grid',
-        gridGap: 20,
-      }}
-    >
-      <div>
-        <label htmlFor="name-input">Name</label>
-        <br />
-        <StoredFormControl>
-          <input id="name-input" type="text" name="name" required />
-        </StoredFormControl>
-      </div>
-      <div>
-        <label htmlFor="email-input">Email</label>
-        <br />
-        <StoredFormControl>
-          <input id="email-input" type="email" name="email" required />
-        </StoredFormControl>
-      </div>
-      <div css={{display: 'grid', gridGap: 20}}>
-        <StoredFormControl defaultValue="workshop">
-          <SubjectSelector
-            label="Email Type"
-            name="type"
-            options={{
-              workshop: {
-                display: 'Enterprise Workshop Inquiry',
-                ui: (
-                  <>
-                    <div>
-                      <label htmlFor="company-name-input">Company Name</label>
-                      <br />
-                      <StoredFormControl>
-                        <input
-                          type="text"
-                          id="company-name-input"
-                          name="company"
-                          required
-                          css={{width: '100%'}}
-                        />
-                      </StoredFormControl>
-                    </div>
-                    <div>
-                      <label htmlFor="subject-input">Email Subject</label>
-                      <br />
-                      <StoredFormControl lsKey="lsfc:training-subject">
-                        <input
-                          defaultValue="My organization needs training"
-                          type="text"
-                          id="subject-input"
-                          name="subject"
-                          required
-                          css={{width: '100%'}}
-                        />
-                      </StoredFormControl>
-                    </div>
-                  </>
-                ),
-              },
-              testimonial: {
-                display: 'Submit a testimonial',
-                ui: (
-                  <>
-                    <small>
-                      {`
-                      I love hearing about people that I've helped.
-                      I ocassionally use testimonials on my website.
-                      If you had a good experience with some of my material,
-                      I'd love to hear about it!
-                    `}
-                    </small>
-                    <div>
-                      <label htmlFor="subject-input">Email Subject</label>
-                      <br />
-                      <StoredFormControl lsKey="lsfc:testimonial-subject">
-                        <input
-                          defaultValue="I want to submit a testimonial"
-                          type="text"
-                          name="subject"
-                          id="subject-input"
-                          required
-                          css={{width: '100%'}}
-                        />
-                      </StoredFormControl>
-                    </div>
-                    <div>
-                      <label htmlFor="link-input">
-                        {`Link to testimonial (tweet/blog post/etc.)`}
-                      </label>
-                      <small css={{marginLeft: 6}}>
-                        {`(optional, but `}
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="https://twitter.com/intent/tweet"
-                        >
-                          appreciated
-                        </a>
-                        {`)`}
-                      </small>
-                      <br />
-                      <StoredFormControl lsKey="lsfc:testimonial-url">
-                        <input type="url" name="link" css={{width: '100%'}} />
-                      </StoredFormControl>
-                    </div>
-                  </>
-                ),
-              },
-              consulting: {
-                display: 'Consulting',
-                ui: (
-                  <>
-                    <div>
-                      <div>
-                        You can schedule your own consultation time with me at{' '}
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="https://kcd.im/consult"
-                        >
-                          kcd.im/consult
-                        </a>
-                      </div>
-                      <div>
-                        {`However, if you'd like more time or have special requirements, feel free to complete this form and I'll be in touch.`}
-                      </div>
-                    </div>
-                    <div>
-                      <label htmlFor="subject-input">
-                        Consulting Email Subject
-                      </label>
-                      <br />
-                      <StoredFormControl lsKey="lsfc:consulting-subject">
-                        <input
-                          type="text"
-                          name="subject"
-                          id="subject-input"
-                          required
-                          css={{width: '100%'}}
-                          defaultValue="I need some special consulting"
-                        />
-                      </StoredFormControl>
-                    </div>
-                  </>
-                ),
-              },
-              help: {
-                display: 'Help / Ask a question',
-                ui: (
-                  <>
-                    <div>
-                      <small>
-                        If you need help with one of my open source projects,
-                        please either ask on the official support channel for
-                        the project or open an issue on GitHub. Please do not
-                        ask here.
-                      </small>
-                      <br />
-                      <small>
-                        {`I prefer general questions to be asked during `}
-                        <a href="https://kcd.im/office-hours">{`my Office Hours`}</a>
-                        {`. If you ask here, `}
-                        <strong>
-                          <a href="https://kcd.im/no-time">
-                            {`I can't make any promises that I will respond.`}
-                          </a>
-                        </strong>
-                      </small>
-                    </div>
-                    <div>
-                      <label htmlFor="subject-input">Help Subject</label>
-                      <br />
-                      <StoredFormControl lsKey="lsfc:help-subject">
-                        <input
-                          type="text"
-                          name="subject"
-                          id="subject-input"
-                          required
-                          css={{width: '100%'}}
-                          defaultValue="I need help"
-                        />
-                      </StoredFormControl>
-                    </div>
-                  </>
-                ),
-              },
-              other: {
-                display: 'Other...',
-                ui: (
-                  <div>
-                    <label htmlFor="subject-input">Subject</label>
-                    <br />
-                    <StoredFormControl lsKey="lsfc:other-subject">
-                      <input
-                        type="text"
-                        name="subject"
-                        id="subject-input"
-                        required
-                        css={{width: '100%'}}
-                      />
-                    </StoredFormControl>
-                  </div>
-                ),
-              },
-            }}
-          />
-        </StoredFormControl>
-      </div>
-      <div>
-        <div>
-          <label htmlFor="body-textarea">Email body</label>
-          <small css={{marginLeft: 6}}>(**markdown** _supported_)</small>
-        </div>
-        <CountupTextarea
-          id="body-textarea"
-          name="body"
-          style={{width: '100%'}}
-          rows="10"
-          maxLength="1000"
-          minLength="10"
-          required
-        />
-      </div>
-      <div>
-        <button type="submit" disabled={fetching}>
-          Send
-        </button>
-        {fetching ? <span css={{marginLeft: 10}}>...</span> : null}
-        {error ? (
-          <div role="alert" css={{color: 'red'}}>
-            {error.message ? (
-              <>
-                <div>Something went wrong:</div>
-                <pre
-                  style={{
-                    backgroundColor: 'inherit',
-                    whiteSpace: 'normal',
-                  }}
+    <ContactFormWrapper style={style}>
+      {!successful && (
+        <h3
+          css={css`
+            margin-bottom: ${rhythm(1)};
+            margin-top: 0;
+            color: white;
+          `}
+        >
+          {header}
+        </h3>
+      )}
+
+      {!successful && (
+        <Formik
+          initialValues={{
+            email: '',
+            message: '',
+          }}
+          validationSchema={ContactSchema}
+          onSubmit={setValues}
+        >
+          {() => (
+            <StyledFormikForm>
+              <label htmlFor="email">
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                  `}
                 >
-                  {error.message}
-                </pre>
-              </>
-            ) : (
-              <div>
-                {`Something went wrong, but I'm not quite sure what. Feel free to `}
-                <a href="https://twitter.com/kentcdodds">ping me on twitter</a>
-              </div>
-            )}
-          </div>
-        ) : null}
-      </div>
-    </form>
+                  Email
+                  <ErrorMessage
+                    name="email"
+                    component="span"
+                    className="field-error"
+                  />
+                </div>
+              </label>
+              <Field
+                id="email"
+                aria-required="true"
+                name="email"
+                placeholder="beth@harmon.com"
+                type="email"
+              />
+              <label htmlFor="message">
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                  `}
+                >
+                  Message
+                  <ErrorMessage
+                    name="message"
+                    component="span"
+                    className="field-error"
+                  />
+                </div>
+              </label>
+              <Field
+                id="message"
+                aria-required="false"
+                name="message"
+                placeholder="Do you play chess?"
+                type="text"
+              />
+              <button data-element="submit" type="submit">
+                {!pending && 'Send'}
+                {pending && 'Sending...'}
+              </button>
+            </StyledFormikForm>
+          )}
+        </Formik>
+      )}
+      {submitted && !pending && <MessageSentInfo response={response} />}
+      {errorMessage && <div>{errorMessage}</div>}
+    </ContactFormWrapper>
   )
 }
-
-function getFormValues(formNode) {
-  return Object.getOwnPropertyNames(formNode.elements).reduce((obj, key) => {
-    const formControl = formNode.elements[key]
-    const name = formControl.getAttribute('name')
-    if (name && !obj[name]) {
-      obj[name] = formControl.value
-    }
-    return obj
-  }, {})
-}
-
-export default ContactForm

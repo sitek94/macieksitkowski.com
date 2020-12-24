@@ -152,8 +152,12 @@ const DefaultHero = styled.section`
   ${({headerColor}) =>
     headerColor
       ? css`
-          background: #3155dc;
-          background-image: linear-gradient(-213deg, #5e31dc 0%, #3155dc 100%);
+          background: ${theme.colors.background_dark};
+          background-image: linear-gradient(
+            -213deg,
+            ${theme.colors.background_light} 0%,
+            ${theme.colors.background_dark} 100%
+          );
           background-position: center right, center left;
           background-repeat: no-repeat;
           background-size: contain;

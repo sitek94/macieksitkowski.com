@@ -19,7 +19,11 @@ function Hero({
         }
         height: 100px;
         width: 100%;
-        background: linear-gradient(-213deg, #5e31dc 0%, #3155dc 100%);
+        background: linear-gradient(
+          -213deg,
+          ${theme.colors.background_light} 0%,
+          ${theme.colors.background_dark} 100%
+        );
         z-index: 0;
         position: relative;
         align-items: center;

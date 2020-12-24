@@ -11,7 +11,7 @@ import theme from '../../config/theme'
 import {bpMaxSM, bpMaxXS} from '../lib/breakpoints'
 import {rhythm, fonts} from '../lib/typography'
 import Projects from 'components/projects'
-
+import Markdown from 'react-markdown'
 const PostTitle = styled.h3`
   margin-bottom: ${rhythm(0.3)};
   transition: ${theme.transition.ease};
@@ -65,21 +65,26 @@ export default function Index() {
             margin-bottom: 40px;
           `}
         >
-          <PostTitle>My Beginnings</PostTitle>
+          <PostTitle>Who am I?</PostTitle>
+
           <Description>
-            I started learning to code in December 2020 with a motivation to
-            switch career from being a waiter/barman. What I did not know back
-            then is that in the process of learning I would soon discover a true
-            passion.
+            <Markdown>
+              {`Hi, I'm Maciek, a self-taught programmer from Poland. One day I decided
+            to switch career from being waiter/barman. What I didn't know back then is 
+            that in the process of learning to code I would soon discover a true passion.`}
+            </Markdown>
           </Description>
         </div>
 
         <div>
-          <PostTitle>Why Front End?</PostTitle>
+          <PostTitle>How did I get here?</PostTitle>
           <Description>
-            I remembered back from high school that each website has head and
-            body sections so I thought that this will give me a nice head
-            start...
+            <Markdown>
+              {`I believe that a strong foundation is necessary when one wants to become a master 
+            in any field. That's why I took [CS50](https://cs50.harvard.edu/x/2020/) before diving deep into the Frond End world. There
+            I learned how to think algorithmically and solve problems efficiently. However, strong foundation is nothing without a practice 
+            and this portfolio accumulates the results of my practice.`}
+            </Markdown>
           </Description>
         </div>
       </Container>

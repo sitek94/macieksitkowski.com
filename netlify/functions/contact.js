@@ -1,24 +1,6 @@
-const {URL} = require('url')
 const nodemailer = require('nodemailer')
-const ow = require('ow')
-const unified = require('unified')
-const markdown = require('remark-parse')
-const remark2rehype = require('remark-rehype')
-const doc = require('rehype-document')
-const format = require('rehype-format')
-const html = require('rehype-stringify')
+const ow = require('ow').default
 const {username} = require('os').userInfo()
-
-function markdownToHtml(markdownString) {
-  return unified()
-    .use(markdown)
-    .use(remark2rehype)
-    .use(doc)
-    .use(format)
-    .use(html)
-    .process(markdownString)
-    .then(x => x.contents)
-}
 
 const isEmail = ow.string.is(e => /^.+@.+\..+$/.test(e))
 
@@ -42,7 +24,7 @@ owWithMessage(
 )
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.mailgun.org',
+  host: 'smtp.eu.mailgun.org',
   port: 587,
   secure: false,
   auth: {
@@ -55,15 +37,18 @@ const headers = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type',
 }
+
 async function handler(event) {
+  // Logger
   const runId = Date.now().toString().slice(-5)
   // eslint-disable-next-line no-console
   const log = (...args) => console.log(runId, ...args)
 
+  // CORS
   const origin = new URL(event.headers.origin)
   const acceptable =
-    (origin.hostname === 'localhost' && username === 'kentcdodds') ||
-    origin.hostname === 'kentcdodds.com'
+    (origin.hostname === 'localhost' && username === 'sitek') ||
+    origin.hostname === 'macieksitkowski.com'
 
   if (!acceptable) {
     return {
@@ -79,35 +64,25 @@ async function handler(event) {
       headers,
     }
   }
-  const {name, email, subject, body, ...otherData} = JSON.parse(event.body)
 
+  const {email, message, ...otherData} = JSON.parse(event.body)
+
+  // Validating
   try {
-    log('> Validating input', ' name: ', name, ' email:', email)
-    owWithMessage(name, 'The name is required.', ow.string.minLength(1))
-    owWithMessage(name, 'The name is too long.', ow.string.maxLength(60))
+    log('> Validating input', ' email: ', email, ' message:', message)
     owWithMessage(
       email,
       'The email is invalid. Please enter a valid email address.',
       isEmail,
     )
     owWithMessage(
-      subject,
-      'The subject is too short. Please be more specific.',
-      ow.string.minLength(5),
-    )
-    owWithMessage(
-      subject,
-      'The subject is too long. Please shorten it.',
-      ow.string.maxLength(120),
-    )
-    owWithMessage(
-      body,
-      'The email body is too short. Give me more details please.',
+      message,
+      'The message is too short. Please, give more details.',
       ow.string.minLength(40),
     )
     owWithMessage(
-      body,
-      'The email body is too long. Be more succinct please.',
+      message,
+      'The message is too long. Please, be more succinct.',
       ow.string.maxLength(1001),
     )
   } catch (e) {
@@ -121,24 +96,23 @@ async function handler(event) {
 
   const otherDataString = JSON.stringify(otherData, null, 2)
 
-  const text = `${body}\n\n---\n\nOther form data:\n\`\`\`\n${otherDataString}\n\`\`\`\n`
-  const sender = `"${name}" <${email}>`
+  const text = `${message}\n\n---\n\nOther form data:\n\`\`\`\n${otherDataString}\n\`\`\`\n`
+  const sender = email
 
-  const message = {
+  const mail = {
     from: sender,
-    to: `"Kent C. Dodds" <me@kentcdodds.com>`,
-    subject,
+    to: `"Maciek Sitkowski" <msitkowski94@gmail.com>`,
+    subject: `Email from ${sender}`,
     text,
-    html: await markdownToHtml(text),
   }
 
   try {
     log('> Sending...')
     await transporter.verify()
-    await transporter.sendMail(message)
+    await transporter.sendMail(mail)
     log('> Send success!')
   } catch (error) {
-    log('> Send failure!', error.message)
+    log('> Send failure!', error, error.message)
     return {
       statusCode: 500,
       body: JSON.stringify({message: error.message}),

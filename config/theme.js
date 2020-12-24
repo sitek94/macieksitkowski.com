@@ -18,9 +18,12 @@ const colors = {
   red: '#E75248',
   green: '#17A974',
   blue: '#327CDC',
+  navy_dark: '#0F1B35',
   yellow: '#FFB700',
   purple: '#8242F6',
   purple_dark: '#231c42',
+  background_light: '#5e31dc',
+  background_dark: '#1e243a',
 }
 
 const theme = {

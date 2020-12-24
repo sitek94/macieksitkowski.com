@@ -2,8 +2,8 @@ import * as React from 'react'
 import {css, keyframes} from '@emotion/react'
 import styled from '@emotion/styled'
 import Markdown from 'react-markdown'
-import Link from '../link'
-import {bpMaxSM} from '../../lib/breakpoints'
+import Link from './link'
+import {bpMaxSM} from 'lib/breakpoints'
 
 export default function Message({
   illustration,

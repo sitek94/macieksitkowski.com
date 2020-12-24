@@ -3,6 +3,7 @@ import {css} from '@emotion/react'
 import {feature} from 'topojson'
 import {json, geoOrthographic, geoPath, select, drag} from 'd3'
 import globe from 'images/globe.svg'
+import theme from '../../../../config/theme'
 
 // World atlas - Land 110m
 const url = 'https://unpkg.com/world-atlas@2.0.2/land-110m.json'
@@ -102,8 +103,11 @@ export default function Globe({
           cursor: grab;
         }
         circle {
-          fill: white;
-          stroke: black;
+          fill: ${theme.colors.white};
+          stroke: ${theme.colors.navy_dark};
+        }
+        path {
+          fill: ${theme.colors.navy_dark};
         }
       `}
     >

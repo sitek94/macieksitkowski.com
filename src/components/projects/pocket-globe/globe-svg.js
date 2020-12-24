@@ -1,7 +1,11 @@
 import * as React from 'react'
 import {css} from '@emotion/react'
+import theme from '../../../../config/theme'
 
-export default function GlobeSvg({color = 'black', bgColor = 'white'}) {
+export default function GlobeSvg({
+  color = theme.color.navy_dark,
+  bgColor = theme.colors.white,
+}) {
   return (
     <svg
       version="1.1"

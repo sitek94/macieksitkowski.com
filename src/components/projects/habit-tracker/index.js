@@ -13,7 +13,7 @@ export default function HabitTrackerCta({
   title = `Build a routine of positive, life changing habits`,
   button = `See project`,
   byline = `Habit Tracker is my final project for Harvard's course CS50: Introduction to Computer Science.`,
-  background = '#0F1B35',
+  background = theme.colors.navy_dark,
 }) {
   return (
     <Banner

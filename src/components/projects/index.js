@@ -34,6 +34,7 @@ const TechToggle = styled.button`
 const orderedTechs = [
   'react',
   'material-ui',
+  'firebase',
   'redux',
   'd3',
   'javascript',

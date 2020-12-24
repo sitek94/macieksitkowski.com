@@ -13606,7 +13606,7 @@ node-source-walk@^4.0.0, node-source-walk@^4.2.0:
   dependencies:
     "@babel/parser" "^7.0.0"
 
-nodemailer@^6.4.16:
+nodemailer@^6.4.17:
   version "6.4.17"
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.4.17.tgz#8de98618028953b80680775770f937243a7d7877"
   integrity sha512-89ps+SBGpo0D4Bi5ZrxcrCiRFaMmkCt+gItMXQGzEtZVR3uAD3QAQIDoxTWnx3ky0Dwwy/dhFrQ+6NNGXpw/qQ==
@@ -14079,10 +14079,10 @@ ow@^0.17.0:
   dependencies:
     type-fest "^0.11.0"
 
-ow@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/ow/-/ow-0.20.0.tgz#b61447bfbe887b92e4a3be7a19fd9c9c51c9bdf4"
-  integrity sha512-jZNOCxOhz8OBNHp24PcII4oyIe9M9X9RZth0pflVT0OkAVLsZLWXKrFGC1QrlNJXsawCdSWkGfm7TRhyjx5+nQ==
+ow@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/ow/-/ow-0.21.0.tgz#c2df2ad78d1bfc2ea9cdca311b7a6275258df621"
+  integrity sha512-dlsoDe39g7mhdsdrC1R/YwjT7yjVqE3svWwOlMGvN690waBkgEZBmKBdkmKvSt5/wZ6E0Jn/nIesPqMZOpPKqw==
   dependencies:
     "@sindresorhus/is" "^4.0.0"
     callsites "^3.1.0"

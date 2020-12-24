@@ -3,7 +3,7 @@ import {css} from '@emotion/react'
 import theme from '../../config/theme'
 import Link from 'components/link'
 import {bpMaxSM} from 'lib/breakpoints'
-import SubscribeForm from './forms/subscribe'
+import ContactForm from './forms/contact'
 import {GitHub, YouTube, FreeCodeCamp} from './social'
 import Container from './container'
 
@@ -11,7 +11,7 @@ import particlesOptions from 'lib/particles.json'
 import Particles from 'react-tsparticles'
 import {fonts} from 'lib/typography'
 
-const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
+const Footer = ({contactForm = <ContactForm />, maxWidth}) => (
   <footer
     css={css`
       position: relative;
@@ -42,9 +42,9 @@ const Footer = ({subscribeForm = <SubscribeForm />, maxWidth}) => (
         }
       `}
     >
-      {subscribeForm ? (
+      {contactForm ? (
         <div css={{marginTop: -40}}>
-          {subscribeForm}
+          {contactForm}
           <br />
           <br />
         </div>
