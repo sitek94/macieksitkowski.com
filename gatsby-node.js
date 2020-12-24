@@ -1,11 +1,7 @@
-const fs = require('fs')
 const path = require('path')
 const {URL} = require('url')
-const rimraf = require('rimraf')
-const {spawnSync} = require('child_process')
 const slugify = require('@sindresorhus/slugify')
 const {createFilePath} = require('gatsby-source-filesystem')
-const {zipFunctions} = require('@netlify/zip-it-and-ship-it')
 const config = require('./config/website')
 
 const onCreateWebpackConfig = ({actions}) => {
@@ -118,41 +114,10 @@ function onCreateMdxNode({node, getNode, actions}) {
   })
 }
 
-const onPreBootstrap = () => {
-  if (process.env.gatsby_executing_command === 'develop') {
-    return
-  }
-  require('./other/load-cache')
-
-  const result = spawnSync(
-    './node_modules/.bin/npm-run-all --parallel lint test:coverage',
-    {stdio: 'inherit', shell: true},
-  )
-  if (result.status !== 0) {
-    throw new Error(`pre build failure. Status: ${result.status}`)
-  }
-}
-
-const onPostBuild = async () => {
-  if (process.env.gatsby_executing_command === 'develop') {
-    return
-  }
-  require('./other/make-cache')
-  const srcLocation = path.join(__dirname, `netlify/functions`)
-  const outputLocation = path.join(__dirname, `public/functions`)
-  if (fs.existsSync(outputLocation)) {
-    rimraf.sync(outputLocation)
-  }
-  fs.mkdirSync(outputLocation)
-  await zipFunctions(srcLocation, outputLocation)
-}
-
 module.exports = {
   // createPages,
   onCreateWebpackConfig,
   onCreateNode,
-  onPreBootstrap,
-  onPostBuild,
 }
 
 /*
