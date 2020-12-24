@@ -75,16 +75,6 @@ async function handler(event) {
       'The email is invalid. Please enter a valid email address.',
       isEmail,
     )
-    owWithMessage(
-      message,
-      'The message is too short. Please, give more details.',
-      ow.string.minLength(40),
-    )
-    owWithMessage(
-      message,
-      'The message is too long. Please, be more succinct.',
-      ow.string.maxLength(1001),
-    )
   } catch (e) {
     log('> Validation failed', e.message)
     return {

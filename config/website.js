@@ -25,7 +25,6 @@ module.exports = {
 
   // Social component
   github: 'https://github.com/sitek94/',
-  // linkedin: 'https://www.linkedin.com/in/kentcdodds/',
   youtube: 'https://www.youtube.com/channel/UC1rKQAm9EWiHtI4ADYusG0w',
   freeCodeCamp: 'https://forum.freecodecamp.org/u/sitek94/summary',
 }
