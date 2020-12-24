@@ -135,7 +135,7 @@ function useFetch({url, body}) {
 export default function ContactForm({style, header = 'Send message'}) {
   const [values, setValues] = React.useState()
   const {pending, response, error} = useFetch({
-    url: `http://localhost:9000/.netlify/functions/contact`,
+    url: `${process.env.NETLIFY_FUNCTIONS_URL}/contact`,
     body: values,
   })
 
