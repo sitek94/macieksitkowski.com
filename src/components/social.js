@@ -39,7 +39,6 @@ export const GitHub = ({
   <Link
     to={url}
     css={css`
-      margin-left: 20px;
       color: ${color};
       :hover {
         color: rgba(255, 255, 255, 1);
