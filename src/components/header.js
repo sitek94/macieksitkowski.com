@@ -4,7 +4,6 @@ import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import theme from '../../config/theme'
 import {fonts} from '../lib/typography'
-// import kent from '../images/kent.png'
 import MobileNav from './mobile-nav'
 import Container from './container'
 import {bpMaxSM} from '../lib/breakpoints'
@@ -103,7 +102,6 @@ function Header({
               },
             }}
           >
-            {/* {headerImage && <img src={kent} alt="Kent C. Dodds" />}{' '} */}
             <span>{siteTitle}</span>
           </HeaderLink>
           <div
