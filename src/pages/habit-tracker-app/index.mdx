@@ -1,102 +1,58 @@
 ---
 title: Habit Tracker App
-description: The tools Kent C. Dodds uses
+description: Build a routine of positive, life changing habits.
 ---
+
+import ExternalLinks from 'components/external-links'
+import List from 'components/mdx/list'
+import Li from 'components/mdx/li'
 
 # Habit Tracker App
 
+<ExternalLinks
+  liveUrl="https://habit-tracker-293718.web.app"
+  githubUrl="https://github.com/sitek94/habit-tracker-app"
+/>
+
 **Habit Tracker** is my final project for
-[CS50's Introduction to Computer Science Course](https://www.edx.org/course/cs50s-introduction-to-computer-science).
-What can I say, **Habit Tracker** keeps track of your habits :fireworks:
-:ok_hand: :tada:
+[Harvard's CS50 course](https://www.edx.org/course/cs50s-introduction-to-computer-science).
+It's built as **MVP** (minimal viable product) and it's core functionality is to
+track user's habits.
 
-<a name="video-presentation" />
-
-### Video presentation
-
-A short video (2 minutes in length) where I present the project.
-
-[Video presentation](https://www.youtube.com/watch?v=zIr_d1ZsIGQ)
+## Video presentation
 
 https://www.youtube.com/watch?v=zIr_d1ZsIGQ
 
-<a name="features" />
+## Already implemented features
 
-### Features
+<List>
+  <Li check>Adding, editing and deleting habits</Li>
+  <Li check>Marking habits as completed, failed or skipped</Li>
+  <Li check>Visualization of user performance</Li>
+  <Li check>Customizing app's theme</Li>
+  <Li check>
+    Changing the language: <code>EN|ES|PL</code>
+  </Li>
+</List>
 
-- create an account with using email and password
-- authenticate using Facebook, GitHub or Google
-- login as a guest
-- add, edit and delete habits
-- mark the habits as `completed`, `failed` or `skipped`
-- weekly performancee is visualized in a bar chart
-- brief summary of performance for last week, current week, current day and all
-  time
-- customize the app by changing `primary` and `secondary` color
-- toggle dark mode
-- choose your language: `ES | EN | PL`
+## I'm now working on
 
-<a name="table-of-contents" />
+- Test coverage
+- Performance
+- Accessibility
 
-## Table of Contents
+## Technologies
 
-- [Habit Tracker](#habit-tracker)
-- [About](#about)
-  - [Video presentation](#video-presentation)
-  - [Features](#features)
-- [Table of Contents](#table-of-contents)
-- [Screenshots](#screenshots)
-- [Technologies and Libraries](#technologies-and-libraries)
-- [Challenges](#challenges)
-- [Available scripts](#available-scripts)
-
-<a name="technologies-and-libraries" />
-
-## Technologies and libraries
-
-- React
-- React Query
-- React Router
-- React Hook Form
-- Material UI
-- Firebase
-  - Authentication
-  - Realtime Database
-
-<a name="screenshots" />
-
-## Screenshots
-
-- Landing Page
-
-![Landing Page](./screenshots/landing.png)
-
-- Sign up using **Facebook**, **GitHub**, **Google** or create a new account
-  using your email address.
-
-![Sign in](./screenshots/sign-up.png)
-
-- Create new habit
-
-![Create habit](./screenshots/add-habit.png)
-
-- Manage your habits - preview, edit or delete your habits
-
-![Manage habits](./screenshots/manage-habits.png)
-
-- Keep track of your habits in the Dashboard
-
-![Dashboard](./screenshots/dashboard.png)
-
-- Change your settings
-
-![Settings](./screenshots/settings.png)
-
-- Customize the app the way you want
-
-![Custom theme](./screenshots/layout-theme.png)
-
-<a name="challenges" />
+- **React** - my favorite library for building interactive user interfaces.
+- **React Query** — fetching, caching and updating asynchronous state. Also, I
+  could significantly improve performance by implementing **optimistic
+  updates**.
+- **React Router** — routing but also it was an opportunity to check out the
+  newest React Router v6 that is still in beta.
+- **React Hook Form** — forms and validation.
+- **Material UI** — my favourite user interface library — it's easy to use and
+  implement and it's just so much easier to make the app mobile friendly.
+- **Firebase** - **Authentication**, **Realtime Database** and **Hosting**.
 
 ## Challenges
 
@@ -175,20 +131,3 @@ try. My main goal was to give the user an option to change their locale and
 language. Although this goal was achieved, the solution is far from ideal. First
 of all, I think that it would be better to split these two layers. For example
 in YouTube one can open settings and change either Language or Location.
-
-<a name="available-scripts" />
-
-## Available Scripts
-
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
-
-In the project directory, you can run:
-
-- npm start
-- npm test
-- npm run build
-- npm run eject
-
-For the detailed description of available scripts see
-[CRA Documentation](https://create-react-app.dev/docs/available-scripts)
