@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-// import Img from 'gatsby-image'
 import {css} from '@emotion/react'
 import {bpMaxSM} from 'lib/breakpoints'
 import {fonts} from 'lib/typography'
@@ -11,8 +10,8 @@ import techImage from '../tech-images'
 
 export default function HabitTrackerCta({
   title = `Build a routine of positive, life changing habits`,
-  button = `See project`,
-  byline = `Habit Tracker is my final project for Harvard's course CS50: Introduction to Computer Science.`,
+  button = `Read more`,
+  byline = `Habit Tracker is my final project for Harvard's CS50 course. It's built as MVP (minimal viable product) and it's core functionality is to track user's habits.`,
   background = theme.colors.navy_dark,
 }) {
   return (
@@ -95,6 +94,7 @@ const Content = styled.div({
   width: '100%',
   padding: '40px 0 40px 40px',
   color: theme.colors.white,
+  textAlign: 'left',
   [bpMaxSM]: {
     padding: '32px 16px',
     textAlign: 'center',

@@ -10,9 +10,8 @@ import techImage from '../tech-images'
 
 export default function PocketGlobeApp({
   title = `Discover the countries from all around the world`,
-  button = `See project`,
-  byline = `Pocket Globe is an app where I wanted practice using D3.js with React while keeping
-  it very responsive.`,
+  button = `Read more`,
+  byline = `In this project I used D3.js and React to create a highly interactive and responsive globe.`,
   background = '#fff',
 }) {
   return (
@@ -96,6 +95,7 @@ const Banner = styled.div({
 const Content = styled.div({
   width: '100%',
   padding: '40px 0 40px 40px',
+  textAlign: 'left',
   [bpMaxSM]: {
     padding: '32px 16px',
     textAlign: 'center',

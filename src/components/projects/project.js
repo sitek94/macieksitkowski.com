@@ -90,7 +90,7 @@ export default function Project({
         target="_blank"
         rel="noopener noreferrer"
       >
-        GitHub repository{' '}
+        Source code{' '}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="6"
