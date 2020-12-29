@@ -33,11 +33,7 @@ module.exports = {
     siteUrl,
     title: config.siteTitle,
     description: config.siteDescription,
-    keywords: [
-      'Software Engineer',
-      'React Training',
-      'Testing JavaScript Training',
-    ],
+    keywords: ['Frond-end', 'React', 'Web', 'Developer', 'Portfolio'],
     canonicalUrl: siteUrl,
     image: config.siteLogo,
     author: {

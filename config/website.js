@@ -6,13 +6,10 @@ module.exports = {
   lang: 'en', // Language Tag on <html> element
   pathPrefix: '/',
   siteLogo: 'images/logo.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
-  siteDescription:
-    'Come check out how Maciek Sitkowski can help you level up your career as a software engineer.',
+  siteDescription: `Come check out Maciek Sitkowski's portfolio.`,
   minibio: `
-    <strong>Maciek Sitkowski</strong> is a JavaScript software engineer and
-    teacher. He's taught hundreds of thousands of people how to make the world
-    a better place with quality software development tools and practices. He
-    lives with his wife and four kids in Utah.
+    <strong>Maciek Sitkowski</strong> is a Frond-end engineer from Poland.
+    He specializes in React and modern JavaScript.
   `,
   author: 'Maciek Sitkowski', // Author for schemaORGJSONLD
 
