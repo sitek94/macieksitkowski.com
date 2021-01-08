@@ -48,7 +48,6 @@ function Header({
   headerLink = '/',
   headerColor = 'black',
   fixed = false,
-  headerImage = true,
   maxWidth = 720,
 }) {
   return (
@@ -96,9 +95,6 @@ function Header({
               },
               ':hover, :focus': {
                 background: 'transparent',
-              },
-              span: {
-                transform: headerImage && 'translateX(60px)',
               },
             }}
           >

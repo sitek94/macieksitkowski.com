@@ -189,7 +189,6 @@ function Layout({
   backgroundColor,
   backgroundImage,
   fixedHeader,
-  logo,
   maxWidth = 720,
 }) {
   const data = useStaticQuery(graphql`
@@ -252,7 +251,6 @@ function Layout({
             bgColor={headerBg}
             headerColor={headerColor}
             fixed={fixedHeader}
-            headerImage={logo}
           />
           <MDXProvider components={mdxComponents}>{children}</MDXProvider>
         </div>
