@@ -75,14 +75,14 @@ export default function Projects() {
     }
   `)
 
-  const [activeTechs, setActiveTechs] = React.useState([])
+  const [activeTech, setActiveTech] = React.useState(null)
 
-  const toggleTech = type => {
-    setActiveTechs(
-      activeTechs.includes(type)
-        ? activeTechs.filter(t => t !== type)
-        : activeTechs.concat(type),
-    )
+  const toggleActiveTech = newTech => {
+    if (activeTech === newTech) {
+      setActiveTech(null)
+    } else {
+      setActiveTech(newTech)
+    }
   }
 
   return (
@@ -106,7 +106,9 @@ export default function Projects() {
         `}
       >
         <h2>ALL PROJECTS</h2>
-        <p>Feel free to sort them by the technologies used</p>
+        <p>
+          Select a technology to see only those projects where it has been used
+        </p>
         <div
           css={css`
             display: flex;
@@ -118,7 +120,7 @@ export default function Projects() {
           {orderedTechs.map(tech => (
             <TechToggle
               css={css`
-                ${activeTechs.includes(tech)
+                ${activeTech === tech
                   ? `
                   color: white; 
                   background: #2F313E;
@@ -137,7 +139,7 @@ export default function Projects() {
                   }`}
               `}
               key={tech}
-              onClick={() => toggleTech(tech)}
+              onClick={() => toggleActiveTech(tech)}
             >
               <img
                 width="26px"
@@ -159,11 +161,9 @@ export default function Projects() {
         `}
       >
         {projects.edges
-          .filter(({node: project}) => {
-            return activeTechs.every(tech =>
-              project.frontmatter.techs.includes(tech),
-            )
-          })
+          .filter(({node: project}) =>
+            activeTech ? project.frontmatter.techs.includes(activeTech) : true,
+          )
           .map(({node: project}) => (
             <Project
               key={project.id}
