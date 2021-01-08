@@ -115,6 +115,18 @@ function onCreateMdxNode({node, getNode, actions}) {
     node,
     value: isProject,
   })
+
+  createNodeField({
+    name: 'repoUrl',
+    node,
+    value: node.frontmatter.repoUrl,
+  })
+
+  createNodeField({
+    name: 'homepageUrl',
+    node,
+    value: node.frontmatter.homepageUrl,
+  })
 }
 
 const onPostBuild = async () => {
