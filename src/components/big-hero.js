@@ -13,7 +13,7 @@ import Particles from 'react-tsparticles'
 function Hero({
   children,
   title = `Maciek Sitkowski`,
-  subTitle = `Front-end engineer`,
+  subTitle = `Front-end developer`,
   headerColor, // pluk this out of the props so it's not applied to the section
   ...props
 }) {

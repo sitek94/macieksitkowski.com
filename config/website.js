@@ -8,7 +8,7 @@ module.exports = {
   siteLogo: 'images/logo.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
   siteDescription: `Come check out Maciek Sitkowski's portfolio.`,
   minibio: `
-    <strong>Maciek Sitkowski</strong> is a Frond-end engineer from Poland.
+    <strong>Maciek Sitkowski</strong> is a Frond-end developer from Poland.
     He specializes in React and modern JavaScript.
   `,
   author: 'Maciek Sitkowski', // Author for schemaORGJSONLD
