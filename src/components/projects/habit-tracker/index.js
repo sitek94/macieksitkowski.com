@@ -11,7 +11,10 @@ import techImage from '../tech-images'
 export default function HabitTrackerCta({
   title = `Build a routine of positive, life changing habits`,
   button = `Read more`,
-  byline = `Habit Tracker is my final project for Harvard's CS50 course. It's built as MVP (minimal viable product) and it's core functionality is to track user's habits.`,
+  byline = `
+    Habit Tracker is my final project for Harvard's CS50 course. 
+    It's built as MVP (minimal viable product) and its core functionality 
+    is to track user's habits.`,
   background = theme.colors.navy_dark,
 }) {
   return (
