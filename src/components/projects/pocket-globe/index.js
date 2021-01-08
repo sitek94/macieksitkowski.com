@@ -11,7 +11,10 @@ import techImage from '../tech-images'
 export default function PocketGlobeApp({
   title = `Discover the countries from all around the world`,
   button = `Read more`,
-  byline = `In this project I used D3.js and React to create a highly interactive and responsive globe.`,
+  byline = `
+    The app uses D3.js and React to create a highly interactive 
+    and responsive globe. Then it connects to various APIs to get some
+    data about selected country.`,
   background = '#fff',
 }) {
   return (
