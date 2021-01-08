@@ -89,6 +89,7 @@ export default function Index() {
         </div>
       </Container>
       <div
+        id="recent-projects"
         css={css`
           padding: 40px 0;
           text-align: center;

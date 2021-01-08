@@ -7,6 +7,7 @@ import theme from '../../config/theme'
 import SmallHero from 'components/small-hero'
 import {css} from '@emotion/react'
 import {bpMaxSM} from 'lib/breakpoints'
+import Link from 'components/link'
 
 function MarkdownPage({children, pageContext: {frontmatter}}) {
   return (
@@ -35,6 +36,27 @@ function MarkdownPage({children, pageContext: {frontmatter}}) {
           `}
         >
           {children}
+        </Container>
+        <Container noVerticalPadding>
+          <div
+            css={css`
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+
+              a {
+                margin-left: 20px;
+              }
+            `}
+          >
+            <div
+              css={css`
+                flex-grow: 1;
+                border-top: 1px solid ${theme.colors.gray};
+              `}
+            />
+            <Link to="/#recent-projects">Back to projects</Link>
+          </div>
         </Container>
       </Layout>
     </>
