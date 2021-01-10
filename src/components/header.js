@@ -78,7 +78,7 @@ function Header({
           ? `${theme.colors.purple_dark}EE`
           : 'none'};
         font-family: ${fonts.light};
-        transition: all 300ms ease;
+        transition: background 100ms;
       `}
     >
       <Container maxWidth={maxWidth} noVerticalPadding>
