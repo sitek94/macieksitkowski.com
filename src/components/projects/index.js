@@ -34,14 +34,14 @@ const TechToggle = styled.button`
 const orderedTechs = [
   'react',
   'material-ui',
-  'firebase',
-  'redux',
-  'd3',
   'javascript',
-  'bootstrap',
+  'd3',
+  'firebase',
   'sass',
+  'bootstrap',
   'css',
   'html',
+  'redux',
 ]
 
 export default function Projects() {
@@ -107,14 +107,18 @@ export default function Projects() {
       >
         <h2>ALL PROJECTS</h2>
         <p>
-          Select a technology to see only those projects where it has been used
+          Below you can find all my finished projects.
+          <br />
+          Select a technology to see only those projects where it has been used.
         </p>
         <div
           css={css`
+            margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
+            max-width: 700px;
           `}
         >
           {orderedTechs.map(tech => (
