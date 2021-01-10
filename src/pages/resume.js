@@ -16,15 +16,10 @@ import books from 'images/icons/books.svg'
 import gym from 'images/icons/gym.svg'
 import {fonts} from 'lib/typography'
 
-const interests = [
-  {src: chess, alt: 'chess', text: 'Playing chess'},
-  {src: dancing, alt: 'dancing', text: 'Dancing bachata'},
-  {src: react, alt: 'react', text: 'Learning new things'},
-  {src: checkList, alt: 'checkList', text: 'Building habits'},
-  {src: books, alt: 'books', text: 'Reading'},
-  {src: gym, alt: 'gym', text: 'Being active'},
-]
+// LEFT COLUMN
+//////////////
 
+// Contact
 const contactDetails = [
   {src: website, alt: 'website', text: 'macieksitkowski.com'},
   {src: github, alt: 'github', text: 'github.com/sitek94'},
@@ -33,6 +28,7 @@ const contactDetails = [
   {src: locationPin, alt: 'location', text: 'Warsaw, Poland'},
 ]
 
+// Key skills
 const keySkills = [
   'React, Redux, JSX',
   'JavaScript, D3.js',
@@ -40,6 +36,7 @@ const keySkills = [
   'HTML5, CSS3',
 ]
 
+// Additional skills
 const additionalSkills = [
   'C, Python, SQL',
   'Node.js, Webpack',
@@ -49,12 +46,32 @@ const additionalSkills = [
   'Sass, CSS-in-JS',
 ]
 
+// Languages
 const languages = [
   'Polish - Native',
   'English - Fluent',
   'Spanish - Communicative',
 ]
 
+// Interests
+const interests = [
+  {src: chess, alt: 'chess', text: 'Playing chess'},
+  {src: dancing, alt: 'dancing', text: 'Dancing bachata'},
+  {src: react, alt: 'react', text: 'Learning new things'},
+  {src: checkList, alt: 'checkList', text: 'Building habits'},
+  {src: books, alt: 'books', text: 'Reading'},
+  {src: gym, alt: 'gym', text: 'Being active'},
+]
+
+// RIGHT COLUMN
+///////////////
+
+const summary = `
+  Front-end developer that has 1 year of experience developing web applications 
+  and builidng websites. Broadens his knowledge by actively contributing to Open Source projects.
+`
+
+// Work experience
 const workExperience = [
   {
     company: 'Dolphin Bar & Restaurant',
@@ -105,6 +122,7 @@ const workExperience = [
   },
 ]
 
+// Certificates
 const certificates = [
   {
     name: 'CS50x: Introduction to Computer Science',
@@ -128,6 +146,16 @@ const certificates = [
   },
 ]
 
+// Education
+const education = [
+  {
+    name: 'Warsaw University of Technology',
+    description: 'Architecture and Urban Planning',
+    dateStart: '2014-09',
+    dateEnd: '2015-09',
+  },
+]
+
 function Resume() {
   return (
     <div
@@ -144,7 +172,7 @@ function Resume() {
           display: grid;
           grid-auto-flow: column;
           grid-template-columns: 30% 70%;
-          font-size: 16px;
+          font-size: 14px;
 
           h1 {
             text-align: center;
@@ -154,12 +182,7 @@ function Resume() {
             border-bottom: 1px solid #ccc;
           }
           h2 {
-            margin: 0;
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-          }
-          h3 {
+            font-size: 1.15rem;
             text-align: center;
             margin-bottom: 5px;
           }
@@ -183,55 +206,66 @@ function Resume() {
         `}
       >
         <div
+          id="left-column"
           css={css`
             background-color: #ccc;
             padding: 15px;
           `}
         >
-          <h4>Contact</h4>
-          <ul>
-            {contactDetails.map(({alt, src, text}) => (
-              <li key={alt}>
-                <Detail src={src} alt={alt} text={text} />
-              </li>
-            ))}
-          </ul>
+          <div id="contact">
+            <h4>Contact</h4>
+            <ul>
+              {contactDetails.map(({alt, src, text}) => (
+                <li key={alt}>
+                  <Detail src={src} alt={alt} text={text} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <h4>Key skills</h4>
-          <ul>
-            {keySkills.map(skill => (
-              <li key={skill}>
-                <Detail src={checkbox} alt="Checkbox icon" text={skill} />
-              </li>
-            ))}
-          </ul>
+          <div id="key-skills">
+            <h4>Key skills</h4>
+            <ul>
+              {keySkills.map(skill => (
+                <li key={skill}>
+                  <Detail src={checkbox} alt="Checkbox icon" text={skill} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <h4>Additional skills</h4>
-          <ul>
-            {additionalSkills.map(skill => (
-              <li key={skill}>
-                <Detail src={simpleCheck} alt="Check icon" text={skill} />
-              </li>
-            ))}
-          </ul>
+          <div id="additional-skills">
+            <h4>Additional skills</h4>
+            <ul>
+              {additionalSkills.map(skill => (
+                <li key={skill}>
+                  <Detail src={simpleCheck} alt="Check icon" text={skill} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <h4>Languages</h4>
-          <ul>
-            {languages.map(language => (
-              <li key={language}>
-                <Detail src={message} alt="Message icon" text={language} />
-              </li>
-            ))}
-          </ul>
+          <div id="languages">
+            <h4>Languages</h4>
+            <ul>
+              {languages.map(language => (
+                <li key={language}>
+                  <Detail src={message} alt="Message icon" text={language} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <h4>Interests</h4>
-          <ul>
-            {interests.map(({alt, src, text}) => (
-              <li key={alt}>
-                <Detail src={src} alt={alt} text={text} />
-              </li>
-            ))}
-          </ul>
+          <div id="interests">
+            <h4>Interests</h4>
+            <ul>
+              {interests.map(({alt, src, text}) => (
+                <li key={alt}>
+                  <Detail src={src} alt={alt} text={text} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div
           css={css`
@@ -239,6 +273,7 @@ function Resume() {
           `}
         >
           <div
+            id="title"
             css={css`
               margin-bottom: 30px;
             `}
@@ -247,110 +282,106 @@ function Resume() {
             {/* <h2>front-end developer</h2> */}
           </div>
 
-          <div>
-            <h3>Summary</h3>
-            <p>
-              {`Hi, I'm Maciek, a self-taught programmer from Poland. One day I
-            decided to switch career from being waiter/barman. What I didn't
-            know back then is that in the process of learning to code I would
-            soon discover a true passion.`}
-            </p>
+          <div id="summary">
+            <h2>Summary</h2>
+            <p>{summary}</p>
           </div>
 
-          <div>
-            <h3>Work experience</h3>
+          <div id="work-experience">
+            <h2>Work experience</h2>
+            <ul>
+              {workExperience.map(
+                ({
+                  company,
+                  jobTitle,
+                  location,
+                  dateStart,
+                  dateEnd,
+                  description,
+                }) => (
+                  <li key={company}>
+                    <div
+                      css={css`
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        span {
+                          font-size: 0.7rem;
+                          font-family: ${fonts.lightItalic};
+                        }
+                      `}
+                    >
+                      <h5>
+                        {jobTitle} <br />
+                        {company}, {location}{' '}
+                      </h5>
+                      <span>
+                        {format(dateStart)} - {format(dateEnd)}
+                      </span>
+                    </div>
+                    <p
+                      css={css`
+                        font-size: 14px;
+                      `}
+                    >
+                      {description}
+                    </p>
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
 
-            <div>
-              <ul>
-                {workExperience.map(
-                  ({
-                    company,
-                    jobTitle,
-                    location,
-                    dateStart,
-                    dateEnd,
-                    description,
-                  }) => (
-                    <li key={company}>
-                      <div
-                        css={css`
-                          display: flex;
-                          justify-content: space-between;
-                          align-items: center;
-                          span {
-                            font-size: 0.7rem;
-                            font-family: ${fonts.lightItalic};
-                          }
-                        `}
-                      >
-                        <h5>
-                          {jobTitle} <br />
-                          {company}, {location}{' '}
-                        </h5>
-                        <span>
-                          {format(dateStart)} - {format(dateEnd)}
-                        </span>
-                      </div>
-                      <p
-                        css={css`
-                          font-size: 14px;
-                        `}
-                      >
-                        {description}
-                      </p>
-                    </li>
-                  ),
-                )}
-              </ul>
-            </div>
+          <div id="certificates">
+            <h2>Certificates</h2>
 
-            <div>
-              <h3>Certificates</h3>
+            <ul>
+              {certificates.map(({name, provider}) => (
+                <li key={name}>
+                  <span
+                    css={css`
+                      font-family: ${fonts.semibold};
+                    `}
+                  >
+                    {name}
+                  </span>{' '}
+                  &mdash; {provider}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              <div>
-                <ul>
-                  {certificates.map(({name, provider}) => (
-                    <li key={name}>
-                      <span
-                        css={css`
-                          font-family: ${fonts.semibold};
-                        `}
-                      >
-                        {name}
-                      </span>{' '}
-                      &mdash; {provider}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div>
-              <h3>Education</h3>
-              <div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    span {
-                      font-size: 0.7rem;
-                      font-family: ${fonts.lightItalic};
-                    }
-                  `}
-                >
-                  <h5>Warsaw University of Technology</h5>
-                  <span>Sep 2014 - Sep 2015</span>
-                </div>
-                <p
-                  css={css`
-                    font-size: 14px;
-                  `}
-                >
-                  Architecture and Urban Planning
-                </p>
-              </div>
-            </div>
+          <div id="education">
+            <h2>Education</h2>
+            <ul>
+              {education.map(({name, description, dateStart, dateEnd}) => (
+                <li key={description}>
+                  <div
+                    css={css`
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      span {
+                        font-size: 0.7rem;
+                        font-family: ${fonts.lightItalic};
+                      }
+                    `}
+                  >
+                    <h5>{name}</h5>
+                    <span>
+                      {format(dateStart)} - {format(dateEnd)}
+                    </span>
+                  </div>
+                  <p
+                    css={css`
+                      font-size: 14px;
+                    `}
+                  >
+                    {description}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
