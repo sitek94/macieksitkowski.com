@@ -182,13 +182,11 @@ function Layout({
   hero = <DefaultHero />,
   subscribeForm,
   children,
-  dark,
   headerBg,
   headerColor,
   noFooter,
   backgroundColor,
   backgroundImage,
-  fixedHeader,
   maxWidth = 720,
 }) {
   const data = useStaticQuery(graphql`
@@ -247,10 +245,8 @@ function Layout({
             maxWidth={maxWidth}
             siteTitle={siteTitle}
             headerLink={headerLink}
-            dark={dark}
             bgColor={headerBg}
             headerColor={headerColor}
-            fixed={fixedHeader}
           />
           <MDXProvider components={mdxComponents}>{children}</MDXProvider>
         </div>
