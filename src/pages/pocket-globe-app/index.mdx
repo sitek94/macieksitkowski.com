@@ -8,22 +8,69 @@ homepageUrl: 'https://sitek94.github.io/pocket-globe-app'
 
 # Pocket Globe App
 
-In this app you can use highly interactive and responsive globe to select a
-country. Then the app will connect with various APIs to get more details about
-the country you've selected.
+This app let's you explore all the counties of the world by clicking on them on
+the draggable and zoomable globe.
+
+![app layout](https://raw.githubusercontent.com/sitek94/pocket-globe-app/master/screenshots/main.gif)
+
+## Country details through REST API
+
+To fetch information about each country I'm using the following REST API
+endpoints:
+
+- [REST Countries API](https://restcountries.eu/) - to get information such as
+  country's capital, currency, etc.
+- [Wikimedia REST API ](https://wikimedia.org/api/rest_v1/) - to get a short
+  paragraph about a country
+
+![country details](https://raw.githubusercontent.com/sitek94/pocket-globe-app/master/screenshots/country-info.png)
+
+## Amazing photos from Unsplash JSON API
+
+All the photos used in the app come from
+[Unsplash JSON API](https://unsplash.com/developers) which provides free and
+high-resolution photos.
+
+![country photos from unsplash](https://raw.githubusercontent.com/sitek94/pocket-globe-app/master/screenshots/unsplash.png)
+
+## Go to your current location
+
+Show the country you're currently in. (You'll have to give the app access to
+your location.)
+
+![show my location](https://raw.githubusercontent.com/sitek94/pocket-globe-app/master/screenshots/location.gif)
+
+## Show random country
+
+Let the app select a random country for you by clicking on `Show random country`
+widget.
+
+![show random country](https://raw.githubusercontent.com/sitek94/pocket-globe-app/master/screenshots/random.gif)
+
+## Autocomplete form
+
+Use autocomplete form to find a country.
+
+![autocomplete form](https://raw.githubusercontent.com/sitek94/pocket-globe-app/master/screenshots/autocomplete.gif)
+
+## Dark mode
+
+You can use the app in dark mode if you like!
+
+![dark mode](https://raw.githubusercontent.com/sitek94/pocket-globe-app/master/screenshots/dark-mode.png)
 
 ## Technologies used
 
-- React - interactive UI
-- D3 - dynamic and interactive data visualizations
-- World Atlas TopoJSON - redistribution of
-  [Natural Earth](http://www.naturalearthdata.com/)’s vector data
-- Material UI - a collection of React components
-- REST Countries - information about countries via RESTful API
-- Unsplash API - free high-resolution photos
-- Wikimedia REST API - access to Wikimedia's content and metadata
+- React
+- D3 + TopoJSON + World Atlas TopoJSON
+- Material-UI
+- REST Countries API
+- Unsplash API
+- Wikimedia REST API
 
-## Keyboard shortcuts
+## Accessibility
+
+Keyboard shortcuts
 
 | Key      | Description                |
 | -------- | :------------------------- |
