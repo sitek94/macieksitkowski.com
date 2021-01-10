@@ -140,7 +140,7 @@ function Header({
             </NavLink>
             <NavLink
               headerColor={headerColor}
-              to="/#projects"
+              to="/#all-projects"
               aria-label="View all projects section"
             >
               All projects

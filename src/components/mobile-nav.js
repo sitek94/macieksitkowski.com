@@ -117,10 +117,10 @@ const Toggle = ({color = 'white'}) => {
             </Link>
             <Link
               aria-label="Go to projects section"
-              to="/#projects"
+              to="/#all-projects"
               onClick={toggleOff}
             >
-              Projects
+              All projects
             </Link>
             <Link
               aria-label="Go to contact section"
