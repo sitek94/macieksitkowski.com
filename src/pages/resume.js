@@ -79,7 +79,7 @@ const interests = [
 // Summary
 const summary = `
   Front-end developer that has 1 year of experience developing web applications 
-  and builidng websites. Broadens his knowledge by actively contributing to Open Source projects.
+  and building websites. Broadens his knowledge by actively contributing to Open Source projects.
 `
 
 // Work experience
