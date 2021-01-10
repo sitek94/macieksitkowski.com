@@ -6,6 +6,7 @@ import {Link} from 'gatsby'
 
 const Toggle = ({color = 'white'}) => {
   const [isToggledOn, setToggle] = useState(false)
+  const toggleOff = () => setToggle(false)
   const toggle = () => setToggle(!isToggledOn)
   return (
     <div className="mobile-nav">
@@ -99,13 +100,25 @@ const Toggle = ({color = 'white'}) => {
               }
             `}
           >
-            <Link aria-label="Go to about section" to="#about">
+            <Link
+              aria-label="Go to about section"
+              to="#about"
+              onClick={toggleOff}
+            >
               About
             </Link>
-            <Link aria-label="Go to projects section" to="#projects">
+            <Link
+              aria-label="Go to projects section"
+              to="#projects"
+              onClick={toggleOff}
+            >
               Projects
             </Link>
-            <Link aria-label="Go to contact section" to="#contact">
+            <Link
+              aria-label="Go to contact section"
+              to="#contact"
+              onClick={toggleOff}
+            >
               Contact
             </Link>
           </Container>
