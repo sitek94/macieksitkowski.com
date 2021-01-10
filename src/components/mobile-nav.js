@@ -1,13 +1,14 @@
-import React, {useState} from 'react'
+import * as React from 'react'
 import {css} from '@emotion/react'
 import theme from '../../config/theme'
 import Container from './container'
 import {Link} from 'gatsby'
 
 const Toggle = ({color = 'white'}) => {
-  const [isToggledOn, setToggle] = useState(false)
+  const [isToggledOn, setToggle] = React.useState(false)
   const toggleOff = () => setToggle(false)
   const toggle = () => setToggle(!isToggledOn)
+
   return (
     <div className="mobile-nav">
       <button
