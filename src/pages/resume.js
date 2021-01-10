@@ -66,6 +66,7 @@ const interests = [
 // RIGHT COLUMN
 ///////////////
 
+// Summary
 const summary = `
   Front-end developer that has 1 year of experience developing web applications 
   and builidng websites. Broadens his knowledge by actively contributing to Open Source projects.
@@ -75,12 +76,13 @@ const summary = `
 const workExperience = [
   {
     company: 'Dolphin Bar & Restaurant',
-    location: 'Palma Nova, Mallorca',
+    location: 'Mallorca, Spain',
     dateStart: '2018-05',
     dateEnd: '2019-10',
     jobTitle: 'Bartender/Waiter',
-    description: `Learning Spanish and practicing English. Maitaining relationships with
-    regular and returning clients.`,
+    description: `
+      Working in one of the busiest restaurants on the island I became a better team player.
+      Additionaly it was a great opportunity to learn Spanish and further improve my English.`,
   },
   {
     company: 'Clothes2Order',
@@ -88,8 +90,9 @@ const workExperience = [
     dateStart: '2018-05',
     dateEnd: '2019-10',
     jobTitle: 'Customer Service Assistant',
-    description: `Learning Spanish and practicing English. Maitaining relationships with
-    regular and returning clients.`,
+    description: `
+      Being a part of Customer Service team and talking over the phone with clients from all around the world 
+      helped me improve both my communication and collaboration skills.`,
   },
   {
     company: 'Marks & Spencer',
@@ -97,8 +100,9 @@ const workExperience = [
     dateStart: '2018-05',
     dateEnd: '2019-10',
     jobTitle: 'Production Operative',
-    description: `Learning Spanish and practicing English. Maitaining relationships with
-    regular and returning clients.`,
+    description: `
+      Working for the first time abroad and overcoming the challenges along the road
+      taught me how to quickly adapt to new environments.`,
   },
   {
     company: 'Sniadaniownia Restaurant',
@@ -208,7 +212,7 @@ function Resume() {
         <div
           id="left-column"
           css={css`
-            background-color: #ccc;
+            background-color: #e8e8e8;
             padding: 15px;
           `}
         >
