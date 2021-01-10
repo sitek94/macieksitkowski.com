@@ -5,7 +5,7 @@ export const fonts = {
   thin: 'Inter Thin',
   // thinItalic: 'Inter Thin Italic',
   light: 'Inter Light',
-  // lightItalic: 'Inter Light Italic',
+  lightItalic: 'Inter Light Italic',
   regular: 'Inter Regular',
   // regularItalic: 'Inter Regular Italic',
   // medium: 'Inter Medium',
