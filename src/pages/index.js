@@ -47,7 +47,7 @@ export default function Index() {
           background: white;
           border-radius: 5px;
           padding: 40px 80px 60px 80px;
-          margin-bottom: ${rhythm(1)};
+          margin-bottom: 40px;
           box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 
           ${bpMaxSM} {
