@@ -12,6 +12,7 @@ import {bpMaxSM, bpMaxXS} from '../lib/breakpoints'
 import {rhythm, fonts} from '../lib/typography'
 import Projects from 'components/projects'
 import Markdown from 'react-markdown'
+
 const PostTitle = styled.h3`
   margin-bottom: ${rhythm(0.3)};
   transition: ${theme.transition.ease};
@@ -70,20 +71,19 @@ export default function Index() {
           <Description>
             <Markdown>
               {`Hi, I'm Maciek, a self-taught programmer from Poland. One day I decided
-            to switch career from being waiter/barman. What I didn't know back then is 
-            that in the process of learning to code I would soon discover a true passion.`}
+              to switch career from being waiter/barman. What I didn't know back then is 
+              that in the process of learning to code I would soon discover a true passion.`}
             </Markdown>
           </Description>
         </div>
 
         <div>
-          <PostTitle>How did I get here?</PostTitle>
+          <PostTitle>What do I do?</PostTitle>
           <Description>
             <Markdown>
-              {`I believe that a strong foundation is necessary when one wants to become a master 
-            in any field. That's why I took [CS50](https://cs50.harvard.edu/x/2020/) before diving deep into the Frond End world. There
-            I learned how to think algorithmically and solve problems efficiently. However, strong foundation is nothing without a practice 
-            and this portfolio accumulates the results of my practice.`}
+              {`I have year of experience developing web applications, building
+              websites and actively contributing to Open Source projects. My world revolves around
+              React - that's the technology I know best and work daily with.`}
             </Markdown>
           </Description>
         </div>
