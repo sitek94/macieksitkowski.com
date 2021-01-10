@@ -26,7 +26,7 @@
     },
     "links": {
       "color": "#ffffff",
-      "distance": 100,
+      "distance": 75,
       "enable": true,
       "opacity": 0.2,
       "width": 1
