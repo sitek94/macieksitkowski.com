@@ -21,8 +21,18 @@ import {fonts} from 'lib/typography'
 
 // Contact
 const contactDetails = [
-  {src: website, alt: 'website', text: 'macieksitkowski.com'},
-  {src: github, alt: 'github', text: 'github.com/sitek94'},
+  {
+    src: website,
+    alt: 'website',
+    text: 'macieksitkowski.com',
+    link: 'https://macieksitkowski.com',
+  },
+  {
+    src: github,
+    alt: 'github',
+    text: 'github.com/sitek94',
+    link: 'https://github.com/sitek94',
+  },
   {src: mail, alt: 'mail', text: 'msitkowski94@gmail.com'},
   {src: mobile, alt: 'mobile', text: '+48 797 164 649'},
   {src: locationPin, alt: 'location', text: 'Warsaw, Poland'},
@@ -164,202 +174,141 @@ function Resume() {
   return (
     <div
       css={css`
-        background-color: #222;
+        margin: 0 auto;
+        width: 21cm;
+        height: 29.7cm;
+        background-color: #fff;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 30% 70%;
+        font-size: 14px;
+
+        h1 {
+          text-align: center;
+          margin: 0;
+          letter-spacing: 10px;
+          padding-bottom: 5px;
+          border-bottom: 1px solid #ccc;
+        }
+        h2 {
+          font-size: 1.15rem;
+          text-align: center;
+          margin-bottom: 5px;
+        }
+        h4 {
+          margin-top: 0;
+        }
+        h5 {
+          line-height: 1.4;
+          font-size: 0.8rem;
+          font-family: ${fonts.semibold};
+          margin-bottom: 0;
+        }
+        ul {
+          margin: 0;
+          margin-bottom: 27px;
+          list-style: none;
+        }
+        li {
+          font-size: 14px;
+        }
       `}
     >
       <div
+        id="left-column"
         css={css`
-          margin: 0 auto;
-          width: 21cm;
-          height: 29.7cm;
-          background-color: #fafafa;
-          display: grid;
-          grid-auto-flow: column;
-          grid-template-columns: 30% 70%;
-          font-size: 14px;
+          background-color: #f4f4f4;
+          padding: 15px;
+        `}
+      >
+        <div id="contact">
+          <h4>Contact</h4>
+          <ul>
+            {contactDetails.map(({alt, src, link, text}) => (
+              <li key={alt}>
+                <Detail src={src} alt={alt} text={text} link={link} />
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          h1 {
-            text-align: center;
-            margin: 0;
-            letter-spacing: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #ccc;
-          }
-          h2 {
-            font-size: 1.15rem;
-            text-align: center;
-            margin-bottom: 5px;
-          }
-          h4 {
-            margin-top: 0;
-          }
-          h5 {
-            line-height: 1.4;
-            font-size: 0.8rem;
-            font-family: ${fonts.semibold};
-            margin-bottom: 0;
-          }
-          ul {
-            margin: 0;
-            margin-bottom: 27px;
-            list-style: none;
-          }
-          li {
-            font-size: 14px;
-          }
+        <div id="key-skills">
+          <h4>Key skills</h4>
+          <ul>
+            {keySkills.map(skill => (
+              <li key={skill}>
+                <Detail src={checkbox} alt="Checkbox icon" text={skill} />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div id="additional-skills">
+          <h4>Additional skills</h4>
+          <ul>
+            {additionalSkills.map(skill => (
+              <li key={skill}>
+                <Detail src={simpleCheck} alt="Check icon" text={skill} />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div id="languages">
+          <h4>Languages</h4>
+          <ul>
+            {languages.map(language => (
+              <li key={language}>
+                <Detail src={message} alt="Message icon" text={language} />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div id="interests">
+          <h4>Interests</h4>
+          <ul>
+            {interests.map(({alt, src, text}) => (
+              <li key={alt}>
+                <Detail src={src} alt={alt} text={text} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div
+        css={css`
+          padding: 15px;
         `}
       >
         <div
-          id="left-column"
+          id="title"
           css={css`
-            background-color: #e8e8e8;
-            padding: 15px;
+            margin-bottom: 30px;
           `}
         >
-          <div id="contact">
-            <h4>Contact</h4>
-            <ul>
-              {contactDetails.map(({alt, src, text}) => (
-                <li key={alt}>
-                  <Detail src={src} alt={alt} text={text} />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div id="key-skills">
-            <h4>Key skills</h4>
-            <ul>
-              {keySkills.map(skill => (
-                <li key={skill}>
-                  <Detail src={checkbox} alt="Checkbox icon" text={skill} />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div id="additional-skills">
-            <h4>Additional skills</h4>
-            <ul>
-              {additionalSkills.map(skill => (
-                <li key={skill}>
-                  <Detail src={simpleCheck} alt="Check icon" text={skill} />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div id="languages">
-            <h4>Languages</h4>
-            <ul>
-              {languages.map(language => (
-                <li key={language}>
-                  <Detail src={message} alt="Message icon" text={language} />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div id="interests">
-            <h4>Interests</h4>
-            <ul>
-              {interests.map(({alt, src, text}) => (
-                <li key={alt}>
-                  <Detail src={src} alt={alt} text={text} />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <h1>MACIEK SITKOWSKI</h1>
+          {/* <h2>front-end developer</h2> */}
         </div>
-        <div
-          css={css`
-            padding: 15px;
-          `}
-        >
-          <div
-            id="title"
-            css={css`
-              margin-bottom: 30px;
-            `}
-          >
-            <h1>MACIEK SITKOWSKI</h1>
-            {/* <h2>front-end developer</h2> */}
-          </div>
 
-          <div id="summary">
-            <h2>Summary</h2>
-            <p>{summary}</p>
-          </div>
+        <div id="summary">
+          <h2>Summary</h2>
+          <p>{summary}</p>
+        </div>
 
-          <div id="work-experience">
-            <h2>Work experience</h2>
-            <ul>
-              {workExperience.map(
-                ({
-                  company,
-                  jobTitle,
-                  location,
-                  dateStart,
-                  dateEnd,
-                  description,
-                }) => (
-                  <li key={company}>
-                    <div
-                      css={css`
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        span {
-                          font-size: 0.7rem;
-                          font-family: ${fonts.lightItalic};
-                        }
-                      `}
-                    >
-                      <h5>
-                        {jobTitle} <br />
-                        {company}, {location}{' '}
-                      </h5>
-                      <span>
-                        {format(dateStart)} - {format(dateEnd)}
-                      </span>
-                    </div>
-                    <p
-                      css={css`
-                        font-size: 14px;
-                      `}
-                    >
-                      {description}
-                    </p>
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
-
-          <div id="certificates">
-            <h2>Certificates</h2>
-
-            <ul>
-              {certificates.map(({name, provider}) => (
-                <li key={name}>
-                  <span
-                    css={css`
-                      font-family: ${fonts.semibold};
-                    `}
-                  >
-                    {name}
-                  </span>{' '}
-                  &mdash; {provider}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div id="education">
-            <h2>Education</h2>
-            <ul>
-              {education.map(({name, description, dateStart, dateEnd}) => (
-                <li key={description}>
+        <div id="work-experience">
+          <h2>Work experience</h2>
+          <ul>
+            {workExperience.map(
+              ({
+                company,
+                jobTitle,
+                location,
+                dateStart,
+                dateEnd,
+                description,
+              }) => (
+                <li key={company}>
                   <div
                     css={css`
                       display: flex;
@@ -371,7 +320,10 @@ function Resume() {
                       }
                     `}
                   >
-                    <h5>{name}</h5>
+                    <h5>
+                      {jobTitle} <br />
+                      {company}, {location}{' '}
+                    </h5>
                     <span>
                       {format(dateStart)} - {format(dateEnd)}
                     </span>
@@ -384,29 +336,102 @@ function Resume() {
                     {description}
                   </p>
                 </li>
-              ))}
-            </ul>
-          </div>
+              ),
+            )}
+          </ul>
+        </div>
+
+        <div id="certificates">
+          <h2>Certificates</h2>
+
+          <ul>
+            {certificates.map(({name, provider}) => (
+              <li key={name}>
+                <span
+                  css={css`
+                    font-family: ${fonts.semibold};
+                  `}
+                >
+                  {name}
+                </span>{' '}
+                &mdash; {provider}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div id="education">
+          <h2>Education</h2>
+          <ul>
+            {education.map(({name, description, dateStart, dateEnd}) => (
+              <li key={description}>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    span {
+                      font-size: 0.7rem;
+                      font-family: ${fonts.lightItalic};
+                    }
+                  `}
+                >
+                  <h5>{name}</h5>
+                  <span>
+                    {format(dateStart)} - {format(dateEnd)}
+                  </span>
+                </div>
+                <p
+                  css={css`
+                    font-size: 14px;
+                  `}
+                >
+                  {description}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
   )
 }
+/* 
 
-const Detail = ({src, alt, text}) => (
-  <div
-    css={css`
-      display: flex;
-      align-items: center;
 
-      img {
-        margin-right: 10px;
-      }
-    `}
-  >
-    <img width={18} height={18} src={src} alt={alt} /> {text}
-  </div>
-)
+*/
+const Detail = ({src, alt, link, text}) => {
+  const detail = (
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+
+        img {
+          margin-right: 10px;
+        }
+      `}
+    >
+      <img width={18} height={18} src={src} alt={alt} /> {text}
+    </div>
+  )
+
+  return link ? (
+    <a
+      css={css`
+        text-decoration: none;
+        color: hsla(0, 0%, 0%, 0.8);
+      `}
+      href={link}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      {detail}
+    </a>
+  ) : (
+    detail
+  )
+}
 
 function format(dateString) {
   const [year, month] = dateString.split('-')
