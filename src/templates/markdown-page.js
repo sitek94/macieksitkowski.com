@@ -12,6 +12,20 @@ import {fonts} from 'lib/typography'
 import styled from '@emotion/styled'
 
 function MarkdownPage({children, pageContext: {frontmatter}}) {
+  const projectLinks = (
+    <div
+      css={css`
+        margin-top: 40px;
+        a:not(:last-child) {
+          margin-right: 10px;
+        }
+      `}
+    >
+      <Button href={frontmatter.homepageUrl}>Project LIVE</Button>
+      <Button href={frontmatter.repoUrl}>Source code</Button>
+    </div>
+  )
+
   return (
     <>
       <SEO frontmatter={frontmatter} />
@@ -37,17 +51,9 @@ function MarkdownPage({children, pageContext: {frontmatter}}) {
             }
           `}
         >
-          <div
-            css={css`
-              a:not(:last-child) {
-                margin-right: 10px;
-              }
-            `}
-          >
-            <Button href={frontmatter.homepageUrl}>Project LIVE</Button>
-            <Button href={frontmatter.repoUrl}>Source code</Button>
-          </div>
+          {projectLinks}
           {children}
+          {projectLinks}
         </Container>
         <Container noVerticalPadding>
           <div
