@@ -42,29 +42,43 @@ const NavLink = styled(HeaderLink)({
 })
 
 function Header({
-  dark,
-  bgColor = 'none',
   siteTitle,
   headerLink = '/',
   headerColor = 'black',
-  fixed = false,
   maxWidth = 720,
 }) {
+  const [isScrolledDown, setIsScrolledDown] = React.useState(false)
+
+  React.useEffect(() => {
+    const onScroll = () => {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        setIsScrolledDown(true)
+      } else {
+        setIsScrolledDown(false)
+      }
+    }
+    window.addEventListener('scroll', onScroll)
+
+    return () => window.removeEventListener('scroll', onScroll)
+  })
+
   return (
     <header
       css={css`
+        z-index: 10;
+        position: fixed;
+        top: 0;
         width: 100%;
         flex-shrink: 0;
-        background: none;
-        padding: 30px 0 0 0;
-        ${bpMaxSM} {
-          padding: 35px 0 0 0;
-        }
-        background: ${dark ? '#090909' : `${bgColor}` || 'none'};
-        z-index: 10;
-        position: ${fixed ? 'fixed' : 'absolute'};
-        top: 0;
+        padding: 10px 0;
+        background: ${isScrolledDown
+          ? `${theme.colors.purple_dark}EE`
+          : 'none'};
         font-family: ${fonts.light};
+        transition: all 300ms ease;
       `}
     >
       <Container maxWidth={maxWidth} noVerticalPadding>
