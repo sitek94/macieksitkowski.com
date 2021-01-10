@@ -133,22 +133,29 @@ function Header({
             <MobileNav color={headerColor} />
             <NavLink
               headerColor={headerColor}
-              to="/#projects"
-              aria-label="View projects page"
+              to="/#major-projects"
+              aria-label="View major projects section"
             >
-              Projects
+              Major projects
+            </NavLink>
+            <NavLink
+              headerColor={headerColor}
+              to="/#projects"
+              aria-label="View all projects section"
+            >
+              All projects
             </NavLink>
             <NavLink
               headerColor={headerColor}
               to="/#contact"
-              aria-label="View about page"
+              aria-label="View about section"
             >
               Contact
             </NavLink>
             <NavLink
               headerColor={headerColor}
               to="/#about"
-              aria-label="View about page"
+              aria-label="View about section"
             >
               About
             </NavLink>

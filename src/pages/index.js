@@ -55,7 +55,6 @@ export default function Index() {
             border-radius: 0;
           }
           h2 {
-            margin-top: 0;
             text-align: center;
           }
         `}
@@ -89,17 +88,24 @@ export default function Index() {
         </div>
       </Container>
       <div
-        id="recent-projects"
+        id="major-projects"
         css={css`
           padding: 40px 0;
-          text-align: center;
-          h2 {
-            font-family: ${fonts.light};
-          }
         `}
       >
-        <h2>MOST RECENT PROJECTS</h2>
-        <p>Checkout my most recent work</p>
+        <div
+          css={css`
+            text-align: center;
+            margin: 0 auto;
+            max-width: 550px;
+          `}
+        >
+          <h2>MAJOR PROJECTS</h2>
+          <p>
+            {`These are the projects that I spent the most time working on and the ones that I constantly 
+          keep updating.`}
+          </p>
+        </div>
         <div
           css={css`
             display: grid;

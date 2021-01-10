@@ -103,21 +103,28 @@ const Toggle = ({color = 'white'}) => {
           >
             <Link
               aria-label="Go to about section"
-              to="#about"
+              to="/#about"
               onClick={toggleOff}
             >
               About
             </Link>
             <Link
+              aria-label="Go to major projects section"
+              to="/#major-projects"
+              onClick={toggleOff}
+            >
+              Major projects
+            </Link>
+            <Link
               aria-label="Go to projects section"
-              to="#projects"
+              to="/#projects"
               onClick={toggleOff}
             >
               Projects
             </Link>
             <Link
               aria-label="Go to contact section"
-              to="#contact"
+              to="/#contact"
               onClick={toggleOff}
             >
               Contact
