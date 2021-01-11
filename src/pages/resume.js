@@ -97,8 +97,8 @@ const workExperience = [
   {
     company: 'Clothes2Order',
     location: 'Manchester, United Kingdom',
-    dateStart: '2018-05',
-    dateEnd: '2019-10',
+    dateStart: '2017-03',
+    dateEnd: '2018-05',
     jobTitle: 'Customer Service Assistant',
     description: `
       Being a part of Customer Service team and talking over the phone with clients from all around the world 
@@ -107,8 +107,8 @@ const workExperience = [
   {
     company: 'Marks & Spencer',
     location: 'Castle Donington, United Kingdom',
-    dateStart: '2018-05',
-    dateEnd: '2019-10',
+    dateStart: '2015-12',
+    dateEnd: '2017-01',
     jobTitle: 'Production Operative',
     description: `
       Working for the first time abroad and overcoming the challenges along the road
@@ -117,8 +117,8 @@ const workExperience = [
   {
     company: 'Sniadaniownia Restaurant',
     location: 'Warsaw, Poland',
-    dateStart: '2018-05',
-    dateEnd: '2019-10',
+    dateStart: '2015-05',
+    dateEnd: '2015-09',
     jobTitle: 'Barista/Waiter',
     description: `
       In this small restaurant I learned about importance of 
@@ -127,8 +127,8 @@ const workExperience = [
   {
     company: 'SO! Coffee',
     location: 'Warsaw Chopin Airport, Poland',
-    dateStart: '2018-05',
-    dateEnd: '2019-10',
+    dateStart: '2013-06',
+    dateEnd: '2013-10',
     jobTitle: 'Barista',
     description: `
       Some extremely busy hours at the airport taught me how to organize 
