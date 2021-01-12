@@ -33,7 +33,7 @@ const contactDetails = [
     text: 'github.com/sitek94',
     link: 'https://github.com/sitek94',
   },
-  {src: mail, alt: 'mail', text: 'msitkowski94@gmail.com'},
+  {src: mail, alt: 'email', text: 'msitkowski94@gmail.com'},
   {src: mobile, alt: 'mobile', text: '+48 797 164 649'},
   {src: locationPin, alt: 'location', text: 'Warsaw, Poland'},
 ]
@@ -92,7 +92,7 @@ const workExperience = [
     jobTitle: 'Bartender/Waiter',
     description: `
       Working in one of the busiest restaurants on the island I became a better team player.
-      Additionaly it was a great opportunity to learn Spanish and further improve my English.`,
+      Additionally it was a great opportunity to learn Spanish and further improve my English.`,
   },
   {
     company: 'Clothes2Order',
@@ -287,7 +287,7 @@ function Resume() {
             margin-bottom: 30px;
           `}
         >
-          <h1>MACIEK SITKOWSKI</h1>
+          <h1 id="name">MACIEK SITKOWSKI</h1>
           {/* <h2>front-end developer</h2> */}
         </div>
 
@@ -409,10 +409,12 @@ const Detail = ({src, alt, link, text}) => {
 
         img {
           margin-right: 10px;
+          margin-bottom: 0;
         }
       `}
     >
-      <img width={18} height={18} src={src} alt={alt} /> {text}
+      <img width={18} height={18} src={src} alt={alt} />{' '}
+      <span id={alt}>{text}</span>
     </div>
   )
 
@@ -435,7 +437,7 @@ const Detail = ({src, alt, link, text}) => {
 
 function format(dateString) {
   const [year, month] = dateString.split('-')
-  const date = new Date(year, month)
+  const date = new Date(year, month - 1)
 
   return `${date.toString().slice(4, 7)} ${year}`
 }
