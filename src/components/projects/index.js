@@ -42,6 +42,8 @@ const orderedTechs = [
   'css',
   'html',
   'redux',
+  'typescript',
+  'jest',
 ]
 
 export default function Projects() {
@@ -60,6 +62,7 @@ export default function Projects() {
               description
               repoUrl
               homepageUrl
+              isInDevelopment
               banner {
                 ...bannerImage720
               }
@@ -185,6 +188,7 @@ export default function Projects() {
               repoUrl={project.frontmatter.repoUrl}
               homepageUrl={project.frontmatter.homepageUrl}
               techs={project.frontmatter.techs}
+              isInDevelopment={project.frontmatter.isInDevelopment}
             />
           ))}
       </div>

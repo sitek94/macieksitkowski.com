@@ -38,7 +38,6 @@ function MarkdownPage({children, pageContext: {frontmatter}}) {
             <SmallHero />
           )
         }
-        noFooter={frontmatter.noFooter}
         frontmatter={frontmatter}
         headerColor={theme.colors.white}
       >

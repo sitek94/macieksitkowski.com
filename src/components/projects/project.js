@@ -8,6 +8,7 @@ import {bpMaxSM} from '../../lib/breakpoints'
 import Markdown from 'react-markdown'
 import techImage from './tech-images'
 import Img from 'gatsby-image'
+import construction from 'images/icons/construction.svg'
 
 export default function Project({
   title,
@@ -16,6 +17,7 @@ export default function Project({
   homepageUrl,
   banner,
   techs,
+  isInDevelopment,
 }) {
   return (
     <div
@@ -43,6 +45,7 @@ export default function Project({
       {banner && (
         <div
           css={css`
+            position: relative;
             overflow: hidden;
             margin-bottom: 20px;
             .banner {
@@ -56,8 +59,28 @@ export default function Project({
           <Img
             className="banner"
             fluid={banner.childImageSharp.fluid}
-            alt="some img"
+            alt="App's banner"
           />
+          {isInDevelopment && (
+            <div
+              css={css`
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                background-color: rgba(0, 0, 0, 0.7);
+                img {
+                  height: 50%;
+                }
+              `}
+            >
+              <img src={construction} alt="Screwdriver and hammer" />
+              WORK IN PROGRESS
+            </div>
+          )}
         </div>
       )}
 

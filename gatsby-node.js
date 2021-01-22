@@ -115,6 +115,12 @@ function onCreateMdxNode({node, getNode, actions}) {
     node,
     value: node.frontmatter.homepageUrl,
   })
+
+  createNodeField({
+    name: 'isInDevelopment',
+    node,
+    value: node.frontmatter.isInDevelopment || false,
+  })
 }
 
 const onPostBuild = async () => {
