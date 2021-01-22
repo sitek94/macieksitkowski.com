@@ -184,7 +184,6 @@ function Layout({
   children,
   headerBg,
   headerColor,
-  noFooter,
   backgroundColor,
   backgroundImage,
   maxWidth = 720,
@@ -251,13 +250,11 @@ function Layout({
           <MDXProvider components={mdxComponents}>{children}</MDXProvider>
         </div>
         <div css={{flexShrink: '0'}}>
-          {noFooter ? null : (
-            <Footer
-              maxWidth={maxWidth}
-              author={siteMetadata.author.name}
-              subscribeForm={subscribeForm}
-            />
-          )}
+          <Footer
+            maxWidth={maxWidth}
+            author={siteMetadata.author.name}
+            subscribeForm={subscribeForm}
+          />
         </div>
       </div>
     </ThemeProvider>

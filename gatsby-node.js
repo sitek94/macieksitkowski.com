@@ -99,18 +99,6 @@ function onCreateMdxNode({node, getNode, actions}) {
   })
 
   createNodeField({
-    name: 'redirects',
-    node,
-    value: node.frontmatter.redirects,
-  })
-
-  createNodeField({
-    name: 'noFooter',
-    node,
-    value: node.frontmatter.noFooter || false,
-  })
-
-  createNodeField({
     name: 'isProject',
     node,
     value: isProject,
