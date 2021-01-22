@@ -1,7 +1,8 @@
 import javascript from 'images/icons/javascript.svg'
+import typescript from 'images/icons/typescript.svg'
 import react from 'images/icons/react.svg'
 import redux from 'images/icons/redux.svg'
-import testing from 'images/icons/testing.svg'
+import jest from 'images/icons/jest.svg'
 import materialUi from 'images/icons/material-ui.svg'
 import firebase from 'images/icons/firebase.svg'
 import html from 'images/icons/html.svg'
@@ -23,7 +24,8 @@ const techImages = {
   'material-ui': createTech(materialUi, 'Material UI'),
   firebase: createTech(firebase, 'Firebase'),
   d3: createTech(d3, 'D3'),
-  testing: createTech(testing, 'Testing'),
+  jest: createTech(jest, 'Jest'),
+  typescript: createTech(typescript, 'TypeScript'),
 }
 
 const techImage = tech => {
