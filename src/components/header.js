@@ -155,6 +155,7 @@ function Header({
             <NavLink
               headerColor={headerColor}
               to="resume.pdf"
+              target="_blank"
               aria-label="View Maciek's resume"
             >
               Resume

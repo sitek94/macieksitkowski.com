@@ -129,7 +129,11 @@ const Toggle = ({color = 'white'}) => {
             >
               Contact
             </Link>
-            <Link to="resume.pdf" aria-label="View Maciek's resume">
+            <Link
+              to="resume.pdf"
+              target="_blank"
+              aria-label="View Maciek's resume"
+            >
               Resume
             </Link>
           </Container>
