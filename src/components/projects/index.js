@@ -14,7 +14,6 @@ const TechToggle = styled.button`
   border: none !important;
   display: flex;
   align-items: center;
-  text-transform: capitalize;
   margin: 5px;
   :focus {
     outline: none;
@@ -43,6 +42,8 @@ const orderedTechs = [
   'html',
   'redux',
   'typescript',
+  'nodejs',
+  'express',
   'jest',
 ]
 
