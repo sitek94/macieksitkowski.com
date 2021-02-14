@@ -163,6 +163,43 @@ export default function Project({
   )
 }
 
+// function Tooltip({text, children}) {
+//   return (
+//     <div
+//       css={css`
+//         position: relative;
+//         span {
+//           position: absolute;
+//           top: 60%;
+//           left: -50%;
+//           margin-top: 10px;
+//           padding: 0.55rem 1rem;
+//           font-size: 1rem;
+//           font-weight: 500;
+//           color: #000;
+//           border-radius: 50px;
+//           background-color: #fff;
+//           box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1),
+//             0 5px 15px rgba(0, 0, 0, 0.07);
+
+//           pointer-events: none;
+//           user-select: none;
+//           opacity: 0;
+//           transition: all 0.2s ease-in-out;
+//         }
+
+//         &:hover span {
+//           top: 100%;
+//           opacity: 0.9;
+//         }
+//       `}
+//     >
+//       {children}
+//       <span>{text}</span>
+//     </div>
+//   )
+// }
+
 const Button = styled.a({
   cursor: 'pointer',
   padding: '6px 12px',
