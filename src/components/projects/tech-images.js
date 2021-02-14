@@ -19,7 +19,7 @@ const createTech = (src, label) => ({src, label})
 const techImages = {
   bootstrap: createTech(bootstrap, 'Bootstrap'),
   css: createTech(css, 'CSS'),
-  d3: createTech(d3, 'D3'),
+  d3: createTech(d3, 'D3.js'),
   express: createTech(express, 'Express'),
   firebase: createTech(firebase, 'Firebase'),
   html: createTech(html, 'HTML'),
@@ -30,7 +30,7 @@ const techImages = {
   nodejs: createTech(nodejs, 'Node.js'),
   react: createTech(react, 'React'),
   redux: createTech(redux, 'Redux'),
-  sass: createTech(sass, 'SASS'),
+  sass: createTech(sass, 'Sass'),
   typescript: createTech(typescript, 'TypeScript'),
 }
 
