@@ -145,17 +145,22 @@ export default function Project({
             display: grid;
             grid-auto-flow: column;
             grid-gap: 5px;
+
+            img {
+              user-events: none;
+            }
           `}
         >
           {/* Technology icons */}
           {techs.map(tech => (
-            <img
-              key={tech}
-              width="30px"
-              height="30px"
-              src={techImage(tech).src}
-              alt={techImage(tech).label}
-            />
+            <Tooltip key={tech} text={techImage(tech).label}>
+              <img
+                width="30px"
+                height="30px"
+                src={techImage(tech).src}
+                alt={techImage(tech).label}
+              />
+            </Tooltip>
           ))}
         </span>
       </div>
@@ -163,42 +168,43 @@ export default function Project({
   )
 }
 
-// function Tooltip({text, children}) {
-//   return (
-//     <div
-//       css={css`
-//         position: relative;
-//         span {
-//           position: absolute;
-//           top: 60%;
-//           left: -50%;
-//           margin-top: 10px;
-//           padding: 0.55rem 1rem;
-//           font-size: 1rem;
-//           font-weight: 500;
-//           color: #000;
-//           border-radius: 50px;
-//           background-color: #fff;
-//           box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1),
-//             0 5px 15px rgba(0, 0, 0, 0.07);
+function Tooltip({text, children}) {
+  return (
+    <div
+      css={css`
+        position: relative;
+        span {
+          color: #fff;
+          padding: 4px 8px;
+          font-size: 0.625rem;
+          font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+          font-weight: 500;
+          line-height: 1.4em;
+          border-radius: 4px;
+          background-color: rgba(97, 97, 97, 0.9);
+          transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-//           pointer-events: none;
-//           user-select: none;
-//           opacity: 0;
-//           transition: all 0.2s ease-in-out;
-//         }
+          position: absolute;
+          opacity: 0;
+          visibility: hidden;
+          margin-left: -15px;
+          transform: translateX(-50%);
+        }
 
-//         &:hover span {
-//           top: 100%;
-//           opacity: 0.9;
-//         }
-//       `}
-//     >
-//       {children}
-//       <span>{text}</span>
-//     </div>
-//   )
-// }
+        &:hover span {
+          top: -95%;
+          opacity: 0.9;
+          visibility: visible;
+        }
+      `}
+    >
+      {children}
+      <nobr>
+        <span>{text}</span>
+      </nobr>
+    </div>
+  )
+}
 
 const Button = styled.a({
   cursor: 'pointer',
@@ -218,3 +224,23 @@ const Button = styled.a({
     border: '1px solid #573EDE',
   },
 })
+
+/* 
+    opacity: 1;
+    transform: none;
+    transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+
+    .MuiTooltip-tooltip {
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 0.625rem;
+    max-width: 300px;
+    word-wrap: break-word;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.4em;
+    border-radius: 4px;
+    background-color: rgba(97, 97, 97, 0.9);
+
+*/
