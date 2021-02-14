@@ -43,7 +43,7 @@ const orderedTechs = [
   'redux',
   'typescript',
   'nodejs',
-  'express',
+  'mongodb',
   'jest',
 ]
 

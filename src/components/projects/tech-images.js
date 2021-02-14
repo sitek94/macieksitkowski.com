@@ -7,6 +7,7 @@ import html from 'images/icons/html.svg'
 import javascript from 'images/icons/javascript.svg'
 import jest from 'images/icons/jest.svg'
 import materialUi from 'images/icons/material-ui.svg'
+import mongodb from 'images/icons/mongodb.svg'
 import nodejs from 'images/icons/nodejs.svg'
 import react from 'images/icons/react.svg'
 import redux from 'images/icons/redux.svg'
@@ -25,6 +26,7 @@ const techImages = {
   javascript: createTech(javascript, 'JavaScript'),
   jest: createTech(jest, 'Jest'),
   'material-ui': createTech(materialUi, 'Material UI'),
+  mongodb: createTech(mongodb, 'MongoDB'),
   nodejs: createTech(nodejs, 'Node.js'),
   react: createTech(react, 'React'),
   redux: createTech(redux, 'Redux'),
