@@ -65,7 +65,7 @@ async function handler(event) {
     }
   }
 
-  const {email, message, ...otherData} = JSON.parse(event.body)
+  const {email, message} = JSON.parse(event.body)
 
   // Validating
   try {
@@ -84,16 +84,13 @@ async function handler(event) {
     }
   }
 
-  const otherDataString = JSON.stringify(otherData, null, 2)
-
-  const text = `${message}\n\n---\n\nOther form data:\n\`\`\`\n${otherDataString}\n\`\`\`\n`
   const sender = email
 
   const mail = {
     from: sender,
     to: `"Maciek Sitkowski" <msitkowski94@gmail.com>`,
     subject: `Email from ${sender}`,
-    text,
+    text: message,
   }
 
   try {
