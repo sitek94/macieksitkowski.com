@@ -88,7 +88,7 @@ async function handler(event) {
 
   const mail = {
     from: sender,
-    to: `"Maciek Sitkowski" <msitkowski94@gmail.com>`,
+    to: `"Maciek Sitkowski" <contact@macieksitkowski.com>`,
     subject: `Email from ${sender}`,
     text: message,
   }
