@@ -93,7 +93,6 @@ module.exports = {
         maxWidth: 1035,
       },
     },
-    'gatsby-plugin-workerize-loader',
     'gatsby-plugin-sharp',
     'gatsby-plugin-emotion',
     'gatsby-plugin-catch-links',
