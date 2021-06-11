@@ -42,6 +42,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-preact`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -92,7 +93,6 @@ module.exports = {
         maxWidth: 1035,
       },
     },
-    'gatsby-plugin-workerize-loader',
     'gatsby-plugin-sharp',
     'gatsby-plugin-emotion',
     'gatsby-plugin-catch-links',
