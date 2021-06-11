@@ -41,7 +41,7 @@
     "move": {
       "enable": true,
       "outMode": "bounce",
-      "speed": 3
+      "speed": 1
     },
     "number": {
       "density": {
