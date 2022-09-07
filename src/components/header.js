@@ -154,14 +154,6 @@ function Header({
             </NavLink>
             <NavLink
               headerColor={headerColor}
-              to="resume.pdf"
-              target="_blank"
-              aria-label="View Maciek's resume"
-            >
-              Resume
-            </NavLink>
-            <NavLink
-              headerColor={headerColor}
               to="/#about"
               aria-label="View about section"
             >
