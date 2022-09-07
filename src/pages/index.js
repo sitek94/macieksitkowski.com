@@ -80,7 +80,7 @@ export default function Index() {
           <PostTitle>What do I do?</PostTitle>
           <Description>
             <Markdown>
-              {`I have year of experience developing web applications, building
+              {`I have experience developing web applications, building
               websites and actively contributing to Open Source projects. My world revolves around
               React - that's the technology I know best and work daily with.`}
             </Markdown>
